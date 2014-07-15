@@ -35,6 +35,9 @@ class AMRMetadata():
                 attributes[attr_name] = attr_val
         return attributes, graph
 
+    def add_attribute(self, k, val):
+        self.attributes[k] = val
+
     def __str__(self):
         s = ''
         for k, v in self.attributes:
