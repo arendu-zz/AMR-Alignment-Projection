@@ -12,6 +12,7 @@ from util import *
 import re,sys
 from optparse import OptionParser
 from DependencyGraph import *
+import pdb
 
 # Error definitions
 class LexerError(Exception):
@@ -61,6 +62,8 @@ class AMR(defaultdict):
 
         # attributes to be added
         self.node_to_concepts = {}
+        self.node_to_parents = {}
+        self.relation_map = {}
         self.align_to_sentence = None
 
     @classmethod
@@ -220,10 +223,12 @@ class AMR(defaultdict):
                     state = 6
                 elif type == "IDENTIFIER":
                     stack.append((CNODE,token,None))
+                    #pdb.set_trace()
                     state = 6
                 elif type == "EDGELABEL": #Unary edge
                     stack.append((CNODE,None,None))
                     stack.append((EDGE,token[1:]))
+                    #pdb.set_trace()
                     state = 5
 
                 elif type == "RPAR":
@@ -340,6 +345,8 @@ class AMR(defaultdict):
                 elif type == "COMMA": # to seperate multiple children/tails
                     state = 7
                 elif type == "EDGELABEL":
+                    #print EDGE, token
+                    #pdb.set_trace()
                     stack.append((EDGE,token[1:]))
                     state = 5
                 else: raise ParserError, "Unexpected token %s"%(token.encode('utf8'))
@@ -348,7 +355,7 @@ class AMR(defaultdict):
                 if type == "IDENTIFIER":
                     stack.append((CNODE, token, None)) # another children
                     state = 6
-                elif typpe == "LPAR":
+                elif type == "LPAR":
                     state = 1
                 else: raise ParserError, "Unexpected token %s"%(token)
 
@@ -392,6 +399,7 @@ class AMR(defaultdict):
         """                                                                                         
         Add a (parent, relation, child) triple to the DAG.                                          
         """
+
         if type(child) is not tuple:
             child = (child,)
         if parent in child:
@@ -415,6 +423,11 @@ class AMR(defaultdict):
                     #raise ValueError,"(%s, %s, %s) would produce a cycle with (%s, %s, %s)" % (parent, relation, child, c, rel, test)
 
         self[parent].append(relation, child)
+        #added to get parents of a node
+        _p = self.node_to_parents.get(child[0], [])
+        _p.append(parent)
+        self.node_to_parents[child[0]] = _p
+
 
     def set_alignment(self,alignment):
         self.align_to_sentence = alignment
@@ -636,7 +649,13 @@ if __name__ == "__main__":
 
     '''s = (a / and :op1(恶化 :ARG0(它) :ARG1(模式 :mod(开发)) :time (已经)) :op2(t / 堵塞 :ARG0(它) :ARG1(交通 :mod(局部)) :location(a / around :op1(出口))))'''
     '''s1 = (a  /  and :op1 (c  /  change-01 :ARG0 (i  /  it) :ARG1 (p  /  pattern :mod (d  /  develop-02)) :ARG2 (b  / bad :degree (m  /  more))) :op2 (c2  /  cause-01 :ARG0 i :ARG1 (c3  /  congest-01 :ARG1 (a2  /  around :op1 (e  /  exit :poss i)) :ARG2 (t  /  traffic) :ARG1-of (l2  /  localize-01))) :time (a3  /  already))'''
-    s = "(t / talk-01   :ARG0 (i / i)   :ARG1 (a / and   :op1 (b / bridge)   :op2 (g / golf)   :op3 (p / politics)   :op4 (n2 / necktie))   :ARG2 (h / he))"
+    #s = "(t / talk-01   :ARG0 (i / i)   :ARG1 (a / and   :op1 (b / bridge)   :op2 (g / golf)   :op3 (p / politics)   :op4 (n2 / necktie))   :ARG2 (h / he))"
+    s = '(s   /   see-01   :ARG0_NORE   (i   /   i)   :ARG1   (p   /   picture   :mod   (m   /   magnificent)   ' \
+    ':location   (b2   /   book   :name   (n   /   name   :op1   "True"   :op2   "Stories"   :op3   "from"   :op4   ' \
+    '"Nature")   :topic   (f   /   forest   :mod   (p2   /   primeval))))   :mod   (o   /   once)   :time   (a   /   ' \
+    'age-01   :ARG1_RE   RE_i   :ARG2   (t   /   temporal-quantity   :quant   6   :unit   (y   /   year))))'
+    #s='(a / and :op1 (p / possible :polarity - :domain (m / move-01 :ARG0 (t / they) :time (a2 / after :op1 (t3 /
+    # that)))) :op2 (s / sleep-01 :ARG0 t :duration (t2 / temporal-quantity :quant 6 :unit (m2 / month) :ARG1-of (n / need-01 :ARG0 t :purpose (d / digest-01 :ARG0 t)))))'
     s = s.decode('utf8')
     #amr_ch = AMR.parse_string(s)
     amr_en = AMR.parse_string(s)
