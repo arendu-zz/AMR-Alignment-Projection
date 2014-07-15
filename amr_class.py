@@ -1,5 +1,5 @@
 
-NE_ONTOLOGY = ["person", "name"]
+NE_ONTOLOGY = ["person", "family", "animal", "language", "nationality", "ethnic-group,regional-group", "religious-group", "organization", "company", "government-organization", "military,criminal-organization", "political-party", "school", "university", "research-institute", "team", "league", "location", "city", "city-district", "county", "state", "province", "territory,country", "local-region", "country-region", "world-region", "continent", "ocean", "sea", "lake", "river", "gulf", "bay", "strait", "canal", "peninsula", "mountain", "volcano", "valley", "canyon", "island", "desert" , "forest", "moon", "planet", "star", "constellation", "facility", "airport", "station", "port", "tunnel", "bridge", "road", "railway-line", "canal", "building", "theater", "museum", "palace", "hotel", "worship-place,sports-facility", "market", "park", "zoo", "amusement-park", "event", "incident", "natural-disaster", "earthquake", "war", "conference,game", "festival", "product", "vehicle", "ship", "aircraft", "aircraft-type", "spaceship", "car-make", "work-of-art", "picture", "music", "show", "broadcast-program", "publication", "book", "newspaper", "magazine", "journal", "natural-object", "law", "treaty", "award", "food-dish", " disease", "dna-sequence", "gene", "pathway", "protein", "thing", "name"]
 class Amr:
 	def __init__(self, unparsed, parents = [0]):
 		self.parentnodes = parents
@@ -241,20 +241,27 @@ class Amr:
 						#print "\t", y[-1]
 						#print tok
 				first, second = wordspan.split("-")
-				spandict.append([int(first), int(second), wordspan_correlates])
+				spandict.append([int(first), int(second), wordspan_correlates, element.split("|")[1]])
 				
 		spandict.sort()
 		allterms = []
+		caveman_mappings = []
 		for term in spandict:
+			print term
+			caveman_start = len(allterms)
 			for each_concept in term[2]:
 				if "-" in each_concept and each_concept.split("-")[-1].isdigit():
 					allterms.append("-".join(each_concept.split("-")[:-1]))
 				else:
-					if each_concept in NE_ONTOLOGY:
+					if each_concept in NE_ONTOLOGY and not each_concept in ' '.join(tok):
 						pass
 					else:
+						
 						allterms.append(each_concept)
-		return " ".join(allterms)
+			caveman_end = len(allterms)
+			caveman_mappings.append(str(caveman_start)+"-"+str(caveman_end)+"|"+term[3])
+		
+		return " ".join(allterms), " ".join(caveman_mappings)
 				
 						#print tok[int(first):int(second)]
 
@@ -287,7 +294,7 @@ class AmrConst(Amr):
 	def concept_table(self):
 		return {}
 	def __getitem__(self, call):
-		print call
+		
 		if call == [0]:
 			return self
 		else:
@@ -336,7 +343,8 @@ class AmrDoc:
 				
 			else:
 				buffer += each_line +"\n"
-	def print_amrtized_strings(self):
+	def print_amrtized_strings(self, output_file_name):
+		fout = open(output_file_name, "w")
 		allk = self.ids.keys()
 		y = []
 		for term in allk:
@@ -351,12 +359,13 @@ class AmrDoc:
 			t = self.ids[each_id][1]
 			t.code_reentrancies()
 			#print each_id
-			u =  t.amrtized_string(self.ids[each_id][2], self.ids[each_id][3])
+			caveman_tok, caveman_align =  t.amrtized_string(self.ids[each_id][2], self.ids[each_id][3])
 			box = self.ids[each_id]
 			totalid = box[4]
-			newu = "# ::caveman-string "+u
-			header= box[4].replace("\n","")+"\n"+box[0].replace("\n","")+"\n"+box[5].replace("\n","")+"\n"+box[6].replace("\n","")+"\n"+"# ::tok "+' '.join(box[2]).replace("\n","")+"\n# ::alignments "+box[3].replace("\n","")+"\n"+newu+"\n"+box[7]+"\n"
-			print header
+			newu = "# ::caveman-string "+caveman_tok
+			newa = "# ::caveman-alignment "+caveman_align
+			newamr = box[4].replace("\n","")+"\n"+box[0].replace("\n","")+"\n"+box[5].replace("\n","")+"\n"+box[6].replace("\n","")+"\n"+"# ::tok "+' '.join(box[2]).replace("\n","")+"\n# ::alignments "+box[3].replace("\n","")+"\n"+newu+"\n"+newa+"\n"+box[7]+"\n"
+			fout.write(newamr)
 			
 			#[tempsent, Amr(buffer), temptok, tempalign, totalid, tempzh, tempdate]
 			
@@ -379,7 +388,7 @@ class AmrDoc:
 #t.check_for_reentrant_predicates()
 
 
-#test = "/home/tim/NLP_Programs/AMR-Alignment-Projection/data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned"
+test = "/home/tim/NLP_Programs/AMR-Alignment-Projection/data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned"
 #test = "/home/tim/Corpora/ChineseParalle/deft-p1-amr-r4-xinhua.txt"
-#y = AmrDoc(open(test).read())
-#y.print_amrtized_strings()
+y = AmrDoc(open(test).read())
+y.print_amrtized_strings("/home/tim/NLP_Programs/AMR-Alignment-Projection/data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned.caveman")
