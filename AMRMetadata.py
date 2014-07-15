@@ -35,6 +35,11 @@ class AMRMetadata():
                 attributes[attr_name] = attr_val
         return attributes, graph
 
-
+    def __str__(self):
+        s = ''
+        for k, v in self.attributes:
+            s += '# ' + k + ' ' + str(v) + '\n'
+        s += self.graph_string + '\n'
+        return s
 
 
