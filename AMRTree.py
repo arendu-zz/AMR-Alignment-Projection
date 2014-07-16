@@ -24,6 +24,7 @@ class AMRGraph():
         self.stack_edges = [ROOT]
         self.roots = []
         self.nodes_to_concepts = {}
+        self.nodes_to_parent = {}
         self.nodes_to_children = {}
 
     def clear(self):
@@ -122,12 +123,26 @@ class AMRGraph():
         print 'done'
 
 
-    def traverse(self, path):
+    def traverse(self, sequence):
         """
         path is a sequence of children to take and arrive at the destination node
         eg. 0,1,1,3 is a path to take root r-> child 1 c1-> child 1 c2-> child 3 c3
         then return c3
         """
+        s = [x for x in sequence]
+        sequence.pop(0)
+        node_label = self.roots[0]
+        # TODO: do these graphs always have just one root?
+        while len(sequence) > 0:
+            branch = int(sequence.pop(0))
+            node_labels = []
+            for x in sorted(self.nodes_to_children[node_label]):
+                print x, self.nodes_to_children[node_label][x]
+                nl = self.nodes_to_children[node_label][x][0]
+                # TODO deal with dropped re-enterency here!
+            node_label = node_labels[branch]
+        concept = self.node_to_concepts[node_label]
+        return concept
         pass
 
 
