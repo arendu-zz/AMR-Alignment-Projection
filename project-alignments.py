@@ -6,37 +6,6 @@ import re
 import pdb
 from AMRMetadata import AMRMetadata
 
-"""
-srcipt generates a string with tokens replaces by AMR concepts.
-"""
-
-
-def step_through_graph(graph, sequence):
-    """
-    steps through a AMR graph along some branching sequence and returns the concept at the end point
-    :param sequence:
-    :param graph:
-    :return concept:
-    """
-    s = [x for x in sequence]
-    sequence.pop(0)
-    node_label = graph.roots[0]
-    # TODO: do these graphs always have just one root?
-    while len(sequence) > 0:
-        branch = int(sequence.pop(0))
-        node_labels = []
-        for x in sorted(graph[node_label]):
-            print x, graph[node_label][x]
-            nl = graph[node_label][x][0]
-            if len(graph.node_to_parents[nl]) < 2:
-                node_labels.append(nl)
-            else:
-                # this is a re-enterency and the alignment step through counts should ignore it.
-                print 're-enterency', nl, graph.node_to_parents[nl]
-        node_label = node_labels[branch]
-    concept = graph.node_to_concepts[node_label]
-    return concept
-
 
 def stringyfied_amr(g, s, a):
     """

@@ -27,13 +27,15 @@ class Node():
 
 
 class AMRGraph():
-    def __init__(self):
+    def __init__(self, bracketed_string):
         self.stack_nodes = []
         self.stack_edges = [ROOT]
         self.roots = []
         self.nodes_to_concepts = {}
         self.nodes_to_parents = defaultdict(list)
         self.nodes_to_children = defaultdict(list)
+        s = self.fix_graph_string(bracketed_string)
+        self.parse_bracketed_list(s)
 
     def clear(self):
         self.stack_nodes = []
@@ -94,9 +96,8 @@ class AMRGraph():
         s = list(self.flatten(s))
         return s
 
-    def read_bracketed_string(self, s):
+    def parse_bracketed_list(self, s):
         self.clear()
-        s = self.fix_graph_string(s)
         i = 0
         while i < len(s):
             print i, s[i]
@@ -112,34 +113,27 @@ class AMRGraph():
                     self.roots.append(nv)
                 else:
                     p = self.stack_nodes[-1]
-                    '''n2c = self.nodes_to_children.get(p, [])
-                    if e2c == RE_ENTERENCY:
-                        n2c.append((e2c, e4p, nv))
-                    else:
-                        n2c.append((e4p, nv))
-                    self.nodes_to_children[p] = n2c'''
                     if e2c == RE_ENTERENCY:
                         self.nodes_to_children[p].append((e2c, e4p, nv))
                     else:
                         self.nodes_to_children[p].append((e4p, nv))
 
                 self.append_stacks(nv, e2c)
-
-                # take node at top of the stack and add a child to it
-
                 i += 2  # move 2 steps forward
+
             elif s[i] == ')':
                 self.stack_nodes.pop()
                 i += 1
+
             else:
                 nv, nc, e2c = self.parse_term(s[i])
                 self.append_stacks(nv, e2c)
-
                 i += 1
         print 'done'
+        return self
 
 
-    def traverse(self, sequence):
+    def get_concept(self, sequence):
         """
         path is a sequence of children to take and arrive at the destination node
         eg. 0,1,1,3 is a path to take root r-> child 1 c1-> child 1 c2-> child 3 c3
@@ -208,10 +202,10 @@ if __name__ == '__main__':
     '''
     s = '(s / see-01 :ARG0 (i / i) :ARG1 (p / picture :mod (m / magnificent) :location (b2 / book :name (n / name ' \
         ':op1 "True" :op2 "Stories" :op3 "from" :op4 "Nature") :topic (f / forest :mod (p2 / primeval)))) :mod (o / once) :time (a / age-01 :ARG1 i :ARG2 (t / temporal-quantity :quant 6 :unit (y / year))))'
-
+    s = '(t  /  try-01  :ARG0  (i  /  i)  :ARG1  (e  /  experiment-01  :ARG1  (s  /  show-01  :ARG1  (p2  /  picture  :name  (n  /  name  :op1  "Drawing"  :op2  "Number"  :op3  "One"))  :ARG2  p  :ARG1-of  (k  /  keep-01  :ARG0  i  :time  (a  /  always))))  :time  (m  /  meet-02  :ARG0  i  :ARG1  (p  /  person  :ARG1-of  (i2  /  include-91  :ARG2  (t3  /  they))  :ARG0-of  (s3  /  see-01  :manner  (c2  /  clear)  :ARG1-of  (s4  /  seem-01  :ARG2  i)))))'
     b = AMRGraph()
     fixed_s = ' '.join(b.fix_graph_string(s))
-    b.read_bracketed_string(fixed_s)
+    b.parse_bracketed_string(fixed_s)
     pprint(dict(b.nodes_to_children))
     pprint(b.nodes_to_concepts)
-    print b.traverse('0.3.0.1'.split('.'))
+    print b.get_concept('0.2.0.1.0'.split('.'))
