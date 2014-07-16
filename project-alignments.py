@@ -2,9 +2,8 @@
 # -*- coding:utf-8 -*-
 __author__ = 'arenduchintala'
 from optparse import OptionParser
-import re
-import pdb
 from AMRMetadata import AMRMetadata
+from pprint import pprint
 
 
 def stringyfied_amr(g, s, a):
@@ -24,37 +23,22 @@ def stringyfied_amr(g, s, a):
     for span, align in alignments.items():
         for seq in align:
             print 'getting concept at', seq, 'for span', span
-            seq = seq.split('.')
-            concept = step_through_graph(g, seq)
+            concept = g.get_concept(seq.split('.'))
             current_concepts_at_span = span_concepts.get(span, [])
             current_concepts_at_span.append(concept)
             span_concepts[span] = current_concepts_at_span
-    print span_concepts
-
-
-def read_file(amrfile):
-    """
-    accepts path to file of amr graphs and metadata in  ISI format.
-    :param amrfile:
-    :return amr_metadata: returns list of AMRMetadata objects
-    """
-    amr_metadata = []
-    items = open(amrfile, 'r').read().split('\n\n')
-    for idx, item in enumerate(items):
-        c = AMRMetadata(item)
-        amr_metadata.append(c)
-    return amr_metadata
+    return span_concepts
 
 
 if __name__ == '__main__':
     opt = OptionParser()
     opt.add_option("-a", dest="amr_file", help="AMR File with alignments", default="data/Little_Prince/test.aligned")
     (options, args) = opt.parse_args()
-    amr_metadata = read_file(options.amr_file)  # gets a list of meta data plus the string graph
-    amr_md = amr_metadata[4]
-    pdb.set_trace()
-    for idx, amr_md in enumerate(amr_metadata):
-        # stringyfied_amr(g=amr_md.graph, a=amr_md.attributes['alignments'], cs=amr_md.attributes['snt'])
-        print idx, amr_md.attributes['caveman-string'], '|||', amr_md.attributes['zh']
+
+    for item in open(options.amr_file, 'r').read().split('\n\n'):
+        if item.strip() != '':
+            c = AMRMetadata(item)
+            # pprint(dict(c.graph.nodes_to_children))
+            print stringyfied_amr(c.graph, c.attributes['snt'], c.attributes['alignments'])
 
 
