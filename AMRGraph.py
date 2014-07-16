@@ -27,14 +27,16 @@ class Node():
 
 
 class AMRGraph():
-    def __init__(self, bracketed_string):
+    def __init__(self):
         self.stack_nodes = []
         self.stack_edges = [ROOT]
         self.roots = []
         self.nodes_to_concepts = {}
         self.nodes_to_parents = defaultdict(list)
         self.nodes_to_children = defaultdict(list)
-        s = self.fix_graph_string(bracketed_string)
+
+    def parse_string(self, s):
+        s = self.fix_graph_string(s)
         self.parse_bracketed_list(s)
 
     def clear(self):
@@ -54,7 +56,7 @@ class AMRGraph():
                 yield x
 
     def make_segment_proper(self, x):
-        if len(x.split(':')) > 2:
+        if len(re.split('(\:[a-zA-Z0-9]+\s)', x)) > 2:
             # print 'not proper'
             parts = [p.strip() for p in re.split('(\:[a-zA-Z0-9]+)', x) if p.strip() != '']
             for idx, p in enumerate(parts):
@@ -62,21 +64,18 @@ class AMRGraph():
                     try:
                         parts[idx + 1] = '( ' + parts[idx + 1] + ' )'
                     except IndexError:
-                        pass
-                else:
-                    pass
+                        pass  # this error can be ignored its trying to fix a part that dosent exist
             index_to_join = []
             mod_parts = []
             for idx, p in enumerate(parts):
                 if str(p).startswith(':') and not str(parts[idx - 1]).endswith(')'):
-                    print 'join', p, parts[idx - 1]
+                    # print 'join', p, parts[idx - 1]
                     index_to_join.append((idx, idx - 1))
                     mp = parts[idx - 1] + ' ' + p
                     mod_parts.pop()
                     mod_parts.append(mp)
                 else:
                     mod_parts.append(p.strip())
-
             return mod_parts
         else:
             # print 'proper'
@@ -91,16 +90,17 @@ class AMRGraph():
 
     def fix_graph_string(self, s):
         s = re.split('(\()|(\))', s)
-        s = [x.strip() for x in s if x != '' and x is not None]
-        s = [self.make_segment_proper(x) for x in s]
+        s = [self.make_segment_proper(x.strip()) for x in s if x != '' and x is not None]
         s = list(self.flatten(s))
+        s = ' '.join(s)
+        s = re.split('(\()|(\))', s)
+        s = [x.strip() for x in s if x != '' and x is not None]
         return s
 
     def parse_bracketed_list(self, s):
         self.clear()
         i = 0
         while i < len(s):
-            print i, s[i]
             if s[i] == '(':
                 # try:
                 e4p = self.stack_edges.pop()
@@ -129,8 +129,6 @@ class AMRGraph():
                 nv, nc, e2c = self.parse_term(s[i])
                 self.append_stacks(nv, e2c)
                 i += 1
-        print 'done'
-        return self
 
 
     def get_concept(self, sequence):
@@ -147,9 +145,8 @@ class AMRGraph():
             branch = int(sequence.pop(0))
             node_labels = []
             for x in self.nodes_to_children[node_label]:
-                print x
                 if x[0] == RE_ENTERENCY and x[-1] in self.nodes_to_concepts:
-                    print 'should skip this...'
+                    pass  # 'this is a re-enterency so we skip this
                 else:
                     node_labels.append(x[-1])
             node_label = node_labels[branch]
@@ -173,11 +170,11 @@ class AMRGraph():
                 n_concept = ns[1].strip()
             else:
                 if '"' in ns[0]:
-                    print 'const', ns[0]
+                    # print 'const', ns[0]
                     n_variable = ns[0]
                     n_concept = ns[0]
                 else:
-                    print 'might be re-enterence', ns[0]
+                    # print 'might be re-enterence', ns[0]
                     n_variable = ns[0]
                     edge_term = RE_ENTERENCY
 
@@ -188,24 +185,13 @@ class AMRGraph():
 
 
 if __name__ == '__main__':
-    # s = "(t / talk-01   :ARG0 (i / i)   :ARG1 (a / and   :op1 (b / bridge)   :op2 (g / golf)   :op3 (p / politics)   :op4 (n2 / necktie))   :ARG2 (h / he))"
-    '''s1 = '(s / see-01 :ARG0 (i / i) :ARG1 (p / picture :mod (m / magnificent) :location (b2 / book :name (n / name ' \
-         ':op1 ("True") :op2 ("Stories") :op3 ("from") :op4 ("Nature")) :topic (f / forest :mod (p2 / primeval)))) ' \
-         ':mod (o / ' \
-         'once) :time (a / age-01 :ARG1 (i) :ARG2 (t / temporal-quantity :quant (6) :unit (y / year))))'
-
-    a = AMRGraph()
-    fixed_s1 = ' '.join(a.fix_graph_string(s1))
-    a.read_bracketed_string(fixed_s1)
-    pprint(a.nodes_to_children)
-    pprint(a.nodes_to_concepts)
-    '''
     s = '(s / see-01 :ARG0 (i / i) :ARG1 (p / picture :mod (m / magnificent) :location (b2 / book :name (n / name ' \
         ':op1 "True" :op2 "Stories" :op3 "from" :op4 "Nature") :topic (f / forest :mod (p2 / primeval)))) :mod (o / once) :time (a / age-01 :ARG1 i :ARG2 (t / temporal-quantity :quant 6 :unit (y / year))))'
-    s = '(t  /  try-01  :ARG0  (i  /  i)  :ARG1  (e  /  experiment-01  :ARG1  (s  /  show-01  :ARG1  (p2  /  picture  :name  (n  /  name  :op1  "Drawing"  :op2  "Number"  :op3  "One"))  :ARG2  p  :ARG1-of  (k  /  keep-01  :ARG0  i  :time  (a  /  always))))  :time  (m  /  meet-02  :ARG0  i  :ARG1  (p  /  person  :ARG1-of  (i2  /  include-91  :ARG2  (t3  /  they))  :ARG0-of  (s3  /  see-01  :manner  (c2  /  clear)  :ARG1-of  (s4  /  seem-01  :ARG2  i)))))'
     b = AMRGraph()
-    fixed_s = ' '.join(b.fix_graph_string(s))
-    b.parse_bracketed_string(fixed_s)
-    pprint(dict(b.nodes_to_children))
-    pprint(b.nodes_to_concepts)
-    print b.get_concept('0.2.0.1.0'.split('.'))
+    b.parse_string(s)
+    assert b.get_concept('0.3.0.1'.split('.')) == 'year'
+
+    s = '(c / chapter :mod 1)'
+    c = AMRGraph()
+    c.parse_string(s)
+    print c.get_concept('0.0'.split())
