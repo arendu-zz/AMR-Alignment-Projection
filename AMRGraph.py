@@ -3,9 +3,11 @@ import re
 from pprint import pprint
 from collections import defaultdict
 
-global RE_ENTERENCY, ROOT
+global RE_ENTERENCY, ROOT, POLARITY, NUMERICAL_QUANT
 RE_ENTERENCY = 'RE-ENTERENCY'
 ROOT = 'ROOT'
+POLARITY = 'POLARITY'
+NUMERICAL_QUANT = 'NUMERICAL_QUANT'
 
 
 class Node():
@@ -97,6 +99,13 @@ class AMRGraph():
         s = [x.strip() for x in s if x != '' and x is not None]
         return s
 
+    def check_label_exceptions(self, e2c):
+        a = False
+        # a += e2c == POLARITY
+        # a += e2c == NUMERICAL_QUANT
+        a += e2c == RE_ENTERENCY
+        return a
+
     def parse_bracketed_list(self, s):
         self.clear()
         i = 0
@@ -113,7 +122,7 @@ class AMRGraph():
                     self.roots.append(nv)
                 else:
                     p = self.stack_nodes[-1]
-                    if e2c == RE_ENTERENCY:
+                    if self.check_label_exceptions(e2c):
                         self.nodes_to_children[p].append((e2c, e4p, nv))
                     else:
                         self.nodes_to_children[p].append((e4p, nv))
@@ -148,9 +157,12 @@ class AMRGraph():
                 if x[0] == RE_ENTERENCY and x[-1] in self.nodes_to_concepts:
                     pass  # 'this is a re-enterency so we skip this
                 else:
-                    node_labels.append(x[-1])
+                    node_labels.append(x[-1])  # the last item in the tuple is the node variable
             node_label = node_labels[branch]
-        concept = self.nodes_to_concepts[node_label]
+        try:
+            concept = self.nodes_to_concepts[node_label]
+        except KeyError:
+            concept = node_label  # this is weird as hell
         return concept
 
 
@@ -175,8 +187,18 @@ class AMRGraph():
                     n_concept = ns[0]
                 else:
                     # print 'might be re-enterence', ns[0]
-                    n_variable = ns[0]
-                    edge_term = RE_ENTERENCY
+                    # TODO check variable type if it is pure number or a symbol like '+/-' then its not a RE-Enterency
+                    try:
+                        float(ns[0])
+                        n_variable = ns[0]
+                        # edge_term = NUMERICAL_QUANT
+                    except ValueError:
+                        if ns[0].strip() == '-' or ns[0].strip() == '+':
+                            n_variable = ns[0]
+                            # edge_term = POLARITY
+                        else:
+                            n_variable = ns[0]
+                            edge_term = RE_ENTERENCY
 
             if n_concept is not None:
                 self.nodes_to_concepts[n_variable] = n_concept
@@ -185,13 +207,21 @@ class AMRGraph():
 
 
 if __name__ == '__main__':
+    s = '(c / chapter :mod 1)'
+    c = AMRGraph()
+    c.parse_string(s)
+    assert c.get_concept('0.0'.split('.')) == '1'
+
+    s = '(a / and :op1 (p / possible :polarity - :domain (m / move-01 :ARG0 (t / they) :time (a2 / after :op1 (t3 / that)))) :op2 (s / sleep-01 :ARG0 t :duration (t2 / temporal-quantity :quant 6 :unit (m2 / month) :ARG1-of (n / need-01 :ARG0 t :purpose (d / digest-01 :ARG0 t)))))'
+    a = AMRGraph()
+    a.parse_string(s)
+    assert a.get_concept([0, 1, 0, 2]) == 'need-01'
+
     s = '(s / see-01 :ARG0 (i / i) :ARG1 (p / picture :mod (m / magnificent) :location (b2 / book :name (n / name ' \
         ':op1 "True" :op2 "Stories" :op3 "from" :op4 "Nature") :topic (f / forest :mod (p2 / primeval)))) :mod (o / once) :time (a / age-01 :ARG1 i :ARG2 (t / temporal-quantity :quant 6 :unit (y / year))))'
     b = AMRGraph()
     b.parse_string(s)
     assert b.get_concept('0.3.0.1'.split('.')) == 'year'
 
-    s = '(c / chapter :mod 1)'
-    c = AMRGraph()
-    c.parse_string(s)
-    print c.get_concept('0.0'.split())
+
+
