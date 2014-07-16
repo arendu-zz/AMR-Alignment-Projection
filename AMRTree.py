@@ -1,6 +1,7 @@
 __author__ = 'arenduchintala'
 import re
 from pprint import pprint
+from collections import defaultdict
 
 global RE_ENTERENCY, ROOT
 RE_ENTERENCY = 'RE-ENTERENCY'
@@ -8,14 +9,21 @@ ROOT = 'ROOT'
 
 
 class Node():
-    def __init__(self, concept, concept_label, parent):
-        self.concept = concept
+    def __init__(self, edge_label, concept_label, parent=None):
+        self.edge_label = edge_label
         self.concept_label = concept_label
-        self.children = []  # list of tuples (edge_label, nodes)
+        self.children = []  # list of nodes
         self.parent = parent
 
-    def add_child(self, edge_label, node):
-        self.children.append((edge_label, node))
+    def add_child(self, node):
+        self.children.append(node)
+
+    def __str__(self):
+        s = '(' + self.edge_label + ' ' + self.concept_label + ' '
+        for n in self.children:
+            s += str(n)
+        s += ')'
+        return s
 
 
 class AMRGraph():
@@ -24,15 +32,16 @@ class AMRGraph():
         self.stack_edges = [ROOT]
         self.roots = []
         self.nodes_to_concepts = {}
-        self.nodes_to_parent = {}
-        self.nodes_to_children = {}
+        self.nodes_to_parents = defaultdict(list)
+        self.nodes_to_children = defaultdict(list)
 
     def clear(self):
         self.stack_nodes = []
-        self.stack_edges = [ROOT]
         self.roots = []
+        self.stack_edges = [ROOT]
         self.nodes_to_concepts = {}
-        self.nodes_to_children = {}
+        self.nodes_to_parents = defaultdict(list)
+        self.nodes_to_children = defaultdict(list)
 
     def flatten(self, foo):
         for x in foo:
@@ -45,9 +54,7 @@ class AMRGraph():
     def make_segment_proper(self, x):
         if len(x.split(':')) > 2:
             # print 'not proper'
-
             parts = [p.strip() for p in re.split('(\:[a-zA-Z0-9]+)', x) if p.strip() != '']
-
             for idx, p in enumerate(parts):
                 if str(p).startswith(':'):
                     try:
@@ -94,24 +101,32 @@ class AMRGraph():
         while i < len(s):
             print i, s[i]
             if s[i] == '(':
-                try:
-                    e4p = self.stack_edges.pop()
-                except IndexError:
-                    e4p = None
+                # try:
+                e4p = self.stack_edges.pop()
+                # except IndexError:
+                # e4p = None
 
                 nv, nc, e2c = self.parse_term(s[i + 1])
 
-                if e4p == 'ROOT':
-                    self.roots = nv
+                if e4p == ROOT:
+                    self.roots.append(nv)
                 else:
                     p = self.stack_nodes[-1]
-                    n2c = self.nodes_to_children.get(p, [])
+                    '''n2c = self.nodes_to_children.get(p, [])
                     if e2c == RE_ENTERENCY:
                         n2c.append((e2c, e4p, nv))
                     else:
                         n2c.append((e4p, nv))
-                    self.nodes_to_children[p] = n2c
+                    self.nodes_to_children[p] = n2c'''
+                    if e2c == RE_ENTERENCY:
+                        self.nodes_to_children[p].append((e2c, e4p, nv))
+                    else:
+                        self.nodes_to_children[p].append((e4p, nv))
+
                 self.append_stacks(nv, e2c)
+
+                # take node at top of the stack and add a child to it
+
                 i += 2  # move 2 steps forward
             elif s[i] == ')':
                 self.stack_nodes.pop()
@@ -119,6 +134,7 @@ class AMRGraph():
             else:
                 nv, nc, e2c = self.parse_term(s[i])
                 self.append_stacks(nv, e2c)
+
                 i += 1
         print 'done'
 
@@ -129,21 +145,22 @@ class AMRGraph():
         eg. 0,1,1,3 is a path to take root r-> child 1 c1-> child 1 c2-> child 3 c3
         then return c3
         """
-        s = [x for x in sequence]
+        s = [x for x in sequence]  # just to look at full sequence
         sequence.pop(0)
         node_label = self.roots[0]
-        # TODO: do these graphs always have just one root?
+        # TODO: do these graphs always have just one root? - yes
         while len(sequence) > 0:
             branch = int(sequence.pop(0))
             node_labels = []
-            for x in sorted(self.nodes_to_children[node_label]):
-                print x, self.nodes_to_children[node_label][x]
-                nl = self.nodes_to_children[node_label][x][0]
-                # TODO deal with dropped re-enterency here!
+            for x in self.nodes_to_children[node_label]:
+                print x
+                if x[0] == RE_ENTERENCY and x[-1] in self.nodes_to_concepts:
+                    print 'should skip this...'
+                else:
+                    node_labels.append(x[-1])
             node_label = node_labels[branch]
-        concept = self.node_to_concepts[node_label]
+        concept = self.nodes_to_concepts[node_label]
         return concept
-        pass
 
 
     def parse_term(self, term):
@@ -195,5 +212,6 @@ if __name__ == '__main__':
     b = AMRGraph()
     fixed_s = ' '.join(b.fix_graph_string(s))
     b.read_bracketed_string(fixed_s)
-    pprint(b.nodes_to_children)
+    pprint(dict(b.nodes_to_children))
     pprint(b.nodes_to_concepts)
+    print b.traverse('0.3.0.1'.split('.'))
