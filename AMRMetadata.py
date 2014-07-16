@@ -1,7 +1,7 @@
 __author__ = 'arenduchintala'
 import re
 import os
-from common.AMRGraph import AMR as AMRGraph
+from AMRGraph import AMRGraph
 
 
 class AMRMetadata():
@@ -9,8 +9,8 @@ class AMRMetadata():
         self.attributes = {}
         self.graph_string = None
         self.attributes, self.graph_string = self.divide_text(s)
-        g = AMRGraph()
-        self.graph = g.parse_string(self.graph_string)
+        self.graph = AMRGraph()
+        self.graph.parse_string(self.graph_string)
 
 
     def divide_text(self, s):

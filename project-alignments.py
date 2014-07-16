@@ -16,17 +16,17 @@ def stringyfied_amr(g, s, a):
     :return:
     """
     tok = s.split()
-    print tok
+    # print tok
     alignments = dict((tuple(x.split('|')[0].split('-')), x.split('|')[1].split('+')) for x in a.split())
-    print alignments
+    # print alignments
     span_concepts = {}
     for span, align in alignments.items():
         for seq in align:
-            print 'getting concept at', seq, 'for span', span
+            # print 'getting concept at', seq, 'for span', span
             concept = g.get_concept(seq.split('.'))
             current_concepts_at_span = span_concepts.get(span, [])
             current_concepts_at_span.append(concept)
-            span_concepts[span] = current_concepts_at_span
+            span_concepts[int(span[0]), int(span[1])] = current_concepts_at_span
     return span_concepts
 
 
@@ -39,6 +39,9 @@ if __name__ == '__main__':
         if item.strip() != '':
             c = AMRMetadata(item)
             # pprint(dict(c.graph.nodes_to_children))
-            print stringyfied_amr(c.graph, c.attributes['snt'], c.attributes['alignments'])
+            caveman_map = stringyfied_amr(c.graph, c.attributes['snt'], c.attributes['alignments'])
+            for k in sorted(caveman_map):
+                print caveman_map[k],
+            print ''
 
 
