@@ -58,9 +58,9 @@ class AMRGraph():
                 yield x
 
     def make_segment_proper(self, x):
-        if len(re.split('(\:[a-zA-Z0-9]+\s)', x)) > 2:
+        if len(re.split('(\\s:[a-zA-Z0-9\-]+\s)', x)) > 2:
             # print 'not proper'
-            parts = [p.strip() for p in re.split('(\:[a-zA-Z0-9]+)', x) if p.strip() != '']
+            parts = [p.strip() for p in re.split('(\\s:[a-zA-Z0-9\-]+\s)', x) if p.strip() != '']
             for idx, p in enumerate(parts):
                 if str(p).startswith(':'):
                     try:
@@ -68,13 +68,17 @@ class AMRGraph():
                     except IndexError:
                         pass  # this error can be ignored its trying to fix a part that dosent exist
             index_to_join = []
+
             mod_parts = []
             for idx, p in enumerate(parts):
-                if str(p).startswith(':') and not str(parts[idx - 1]).endswith(')'):
+                if str(p).startswith(':') and not str(parts[idx - 1]).endswith(')') and len(p.split()) > 1:
                     # print 'join', p, parts[idx - 1]
                     index_to_join.append((idx, idx - 1))
                     mp = parts[idx - 1] + ' ' + p
-                    mod_parts.pop()
+                    try:
+                        mod_parts.pop()
+                    except IndexError:
+                        pass  # this happens when we join items at
                     mod_parts.append(mp)
                 else:
                     mod_parts.append(p.strip())
@@ -92,11 +96,11 @@ class AMRGraph():
 
     def fix_graph_string(self, s):
         s = re.split('(\()|(\))', s)
-        s = [self.make_segment_proper(x.strip()) for x in s if x != '' and x is not None]
+        s = [self.make_segment_proper(' ' + x.strip() + ' ') for x in s if x != '' and x is not None]
         s = list(self.flatten(s))
         s = ' '.join(s)
         s = re.split('(\()|(\))', s)
-        s = [x.strip() for x in s if x != '' and x is not None]
+        s = [x.strip() for x in s if x is not None and x.strip() != '']
         return s
 
     def check_label_exceptions(self, e2c):
@@ -167,11 +171,10 @@ class AMRGraph():
 
 
     def parse_term(self, term):
-        # if len(term.split(':')) > 2:
-        # self.parse_multilabels(term)
+
         n_variable, n_concept, edge_term = None, None, None
         try:
-            node_term, edge_term = term.split(':')
+            node_term, edge_term = re.split('^:|\s:', term)  # term.split(':')
         except ValueError:
             node_term, edge_term = term, None
 
@@ -207,6 +210,22 @@ class AMRGraph():
 
 
 if __name__ == '__main__':
+
+    s = '(p  /  possible  :domain  (g  /  go-02  :ARG0  y  :ARG3  (d  /  date-entity  :time  "12:00")  :ARG4  (s  /  sunset)  :manner  (s2  /  straight))  :condition  (p2  /  possible  :domain  (f  /  fly-01  :ARG1  (y  /  you)  :duration  (t  /  temporal-quantity  :quant  1  :unit  (m  /  minute))  :destination  (c  /  country  :name  (n  /  name  :op1  "France")))))'
+    x = AMRGraph()
+    x.parse_string(s)
+    assert x.get_concept('0.0.1'.split('.')) == 'sunset'
+
+    s = '(t  /  try-01  :ARG0  (i  /  i)  :ARG1  (e  /  experiment-01  :ARG1  (s  /  show-01  :ARG1  (p2  /  picture  :name  (n  /  name  :op1  "Drawing"  :op2  "Number"  :op3  "One"))  :ARG2  p  :ARG1-of  (k  /  keep-01  :ARG0  i  :time  (a  /  always))))  :time  (m  /  meet-02  :ARG0  i  :ARG1  (p  /  person  :ARG1-of  (i2  /  include-91  :ARG2  (t3  /  they))  :ARG0-of  (s3  /  see-01  :manner  (c2  /  clear)  :ARG1-of  (s4  /  seem-01  :ARG2  i)))))'
+    x = AMRGraph()
+    x.parse_string(s)
+    assert x.get_concept('0.2.0.1.0'.split('.')) == 'clear'
+
+    s = '(a  /  and  :op1  (u  /  understand-01  :polarity  -  :ARG0  (g  /  grown-up)  :ARG1  (a3  /  anything)  :time  (e2  /  ever)  :prep-by  g)  :op2  (t  /  tiresome  :domain  (e  /  explain-01  :ARG0  (c  /  child)  :ARG1  (t2  /  thing)  :ARG2  g  :time  (a4  /  always)  :mod  (f  /  forever))))'
+    d = AMRGraph()
+    d.parse_string(s)
+    assert d.get_concept('0.1.0.3'.split('.')) == 'forever'
+
     s = '(c / chapter :mod 1)'
     c = AMRGraph()
     c.parse_string(s)
