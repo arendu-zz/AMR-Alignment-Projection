@@ -20,12 +20,13 @@ class AMRMetadata():
         :return:
         '''
         meta = ''
-        graph = ''
+        graph_lines = []
         for line in s.split(os.linesep):
             if line.startswith('#'):
                 meta += line[1:]
             else:
-                graph += line
+                graph_lines.append(line)
+        graph = '\n'.join(graph_lines)
         meta_items = re.split('(\::[a-zA-Z-]+\s)', meta)
         attributes = {}
         for idx, mi in enumerate(meta_items):
@@ -40,9 +41,9 @@ class AMRMetadata():
 
     def __str__(self):
         s = ''
-        for k, v in self.attributes:
-            s += '# ' + k + ' ' + str(v) + '\n'
-        s += self.graph_string + '\n'
+        for k, v in self.attributes.items():
+            s += '# ::' + k + ' ' + str(v) + '\n'
+        s += self.graph_string + '\n\n'
         return s
 
 
