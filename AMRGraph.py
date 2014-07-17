@@ -1,6 +1,5 @@
 __author__ = 'arenduchintala'
 import re
-from pprint import pprint
 from collections import defaultdict
 
 global RE_ENTERENCY, ROOT, POLARITY, NUMERICAL_QUANT
@@ -10,7 +9,7 @@ POLARITY = 'POLARITY'
 NUMERICAL_QUANT = 'NUMERICAL_QUANT'
 
 
-class Node():
+class Node():  # not used at the moment
     def __init__(self, edge_label, concept_label, parent=None):
         self.edge_label = edge_label
         self.concept_label = concept_label
@@ -38,6 +37,7 @@ class AMRGraph():
         self.nodes_to_children = defaultdict(list)
 
     def parse_string(self, s):
+        self.clear()
         s = self.fix_graph_string(s)
         self.parse_bracketed_list(s)
 
@@ -59,7 +59,6 @@ class AMRGraph():
 
     def make_segment_proper(self, x):
         if len(re.split('(\\s:[a-zA-Z0-9\-]+\s)', x)) > 2:
-            # print 'not proper'
             parts = [p.strip() for p in re.split('(\\s:[a-zA-Z0-9\-]+\s)', x) if p.strip() != '']
             for idx, p in enumerate(parts):
                 if str(p).startswith(':'):
@@ -68,11 +67,9 @@ class AMRGraph():
                     except IndexError:
                         pass  # this error can be ignored its trying to fix a part that dosent exist
             index_to_join = []
-
             mod_parts = []
             for idx, p in enumerate(parts):
                 if str(p).startswith(':') and not str(parts[idx - 1]).endswith(')') and len(p.split()) > 1:
-                    # print 'join', p, parts[idx - 1]
                     index_to_join.append((idx, idx - 1))
                     mp = parts[idx - 1] + ' ' + p
                     try:
@@ -84,8 +81,7 @@ class AMRGraph():
                     mod_parts.append(p.strip())
             return mod_parts
         else:
-            # print 'proper'
-            return x
+            return x  # no need to modify this term
 
     def append_stacks(self, nv, e2c):
         if nv is not None:
@@ -94,7 +90,7 @@ class AMRGraph():
         if e2c is not None:
             self.stack_edges.append(e2c)
 
-    def fix_graph_string(self, s):
+    def fix_graph_string(self, s):  # this is a hack
         s = re.split('(\()|(\))', s)
         s = [self.make_segment_proper(' ' + x.strip() + ' ') for x in s if x != '' and x is not None]
         s = list(self.flatten(s))
@@ -111,15 +107,10 @@ class AMRGraph():
         return a
 
     def parse_bracketed_list(self, s):
-        self.clear()
         i = 0
         while i < len(s):
             if s[i] == '(':
-                # try:
                 e4p = self.stack_edges.pop()
-                # except IndexError:
-                # e4p = None
-
                 nv, nc, e2c = self.parse_term(s[i + 1])
 
                 if e4p == ROOT:
@@ -142,6 +133,7 @@ class AMRGraph():
                 nv, nc, e2c = self.parse_term(s[i])
                 self.append_stacks(nv, e2c)
                 i += 1
+        return self
 
 
     def get_concept(self, sequence):
@@ -150,10 +142,8 @@ class AMRGraph():
         eg. 0,1,1,3 is a path to take root r-> child 1 c1-> child 1 c2-> child 3 c3
         then return c3
         """
-        s = [x for x in sequence]  # just to look at full sequence
         sequence.pop(0)
         node_label = self.roots[0]
-        # TODO: do these graphs always have just one root? - yes
         while len(sequence) > 0:
             branch = int(sequence.pop(0))
             node_labels = []
@@ -196,7 +186,7 @@ class AMRGraph():
                         n_variable = ns[0]
                         # edge_term = NUMERICAL_QUANT
                     except ValueError:
-                        if ns[0].strip() == '-' or ns[0].strip() == '+':
+                        if ns[0].strip() == '-':
                             n_variable = ns[0]
                             # edge_term = POLARITY
                         else:
@@ -215,7 +205,6 @@ if __name__ == '__main__':
     b = AMRGraph()
     b.parse_string(s)
     assert b.get_concept('0.3.0.1'.split('.')) == 'year'
-    # 17-21|0.1.1.0+0.1.1.0.0+0.1.1.0.1+0.1.1.0.2+0.1.1.0.3
     assert b.get_concept('0.1.1.0.0'.split('.')) == 'True'
 
     s = '(p  /  possible  :domain  (g  /  go-02  :ARG0  y  :ARG3  (d  /  date-entity  :time  "12:00")  :ARG4  (s  /  sunset)  :manner  (s2  /  straight))  :condition  (p2  /  possible  :domain  (f  /  fly-01  :ARG1  (y  /  you)  :duration  (t  /  temporal-quantity  :quant  1  :unit  (m  /  minute))  :destination  (c  /  country  :name  (n  /  name  :op1  "France")))))'
@@ -242,8 +231,3 @@ if __name__ == '__main__':
     a = AMRGraph()
     a.parse_string(s)
     assert a.get_concept([0, 1, 0, 2]) == 'need-01'
-
-
-
-
-
