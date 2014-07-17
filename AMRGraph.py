@@ -187,7 +187,7 @@ class AMRGraph():
                 if '"' in ns[0]:
                     # print 'const', ns[0]
                     n_variable = ns[0]
-                    n_concept = ns[0]
+                    n_concept = ns[0][1:-1]
                 else:
                     # print 'might be re-enterence', ns[0]
                     # TODO check variable type if it is pure number or a symbol like '+/-' then its not a RE-Enterency
@@ -210,6 +210,13 @@ class AMRGraph():
 
 
 if __name__ == '__main__':
+    s = '(s / see-01 :ARG0 (i / i) :ARG1 (p / picture :mod (m / magnificent) :location (b2 / book :name (n / name ' \
+        ':op1 "True" :op2 "Stories" :op3 "from" :op4 "Nature") :topic (f / forest :mod (p2 / primeval)))) :mod (o / once) :time (a / age-01 :ARG1 i :ARG2 (t / temporal-quantity :quant 6 :unit (y / year))))'
+    b = AMRGraph()
+    b.parse_string(s)
+    assert b.get_concept('0.3.0.1'.split('.')) == 'year'
+    # 17-21|0.1.1.0+0.1.1.0.0+0.1.1.0.1+0.1.1.0.2+0.1.1.0.3
+    assert b.get_concept('0.1.1.0.0'.split('.')) == 'True'
 
     s = '(p  /  possible  :domain  (g  /  go-02  :ARG0  y  :ARG3  (d  /  date-entity  :time  "12:00")  :ARG4  (s  /  sunset)  :manner  (s2  /  straight))  :condition  (p2  /  possible  :domain  (f  /  fly-01  :ARG1  (y  /  you)  :duration  (t  /  temporal-quantity  :quant  1  :unit  (m  /  minute))  :destination  (c  /  country  :name  (n  /  name  :op1  "France")))))'
     x = AMRGraph()
@@ -236,11 +243,7 @@ if __name__ == '__main__':
     a.parse_string(s)
     assert a.get_concept([0, 1, 0, 2]) == 'need-01'
 
-    s = '(s / see-01 :ARG0 (i / i) :ARG1 (p / picture :mod (m / magnificent) :location (b2 / book :name (n / name ' \
-        ':op1 "True" :op2 "Stories" :op3 "from" :op4 "Nature") :topic (f / forest :mod (p2 / primeval)))) :mod (o / once) :time (a / age-01 :ARG1 i :ARG2 (t / temporal-quantity :quant 6 :unit (y / year))))'
-    b = AMRGraph()
-    b.parse_string(s)
-    assert b.get_concept('0.3.0.1'.split('.')) == 'year'
+
 
 
 
