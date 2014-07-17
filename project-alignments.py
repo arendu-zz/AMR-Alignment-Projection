@@ -15,8 +15,6 @@ def stringyfied_amr(g, s, a):
     :param a:
     :return:
     """
-    tok = s.split()
-    # print tok
     alignments = dict((tuple(x.split('|')[0].split('-')), x.split('|')[1].split('+')) for x in a.split())
     # print alignments
     span_concepts = defaultdict(list)
@@ -47,11 +45,10 @@ if __name__ == '__main__':
         if item.strip() != '':
             c = AMRMetadata(item)
             # pprint(dict(c.graph.nodes_to_children))
-            caveman_string, caveman_alignments_string = stringyfied_amr(c.graph, c.attributes['snt'],
-                                                                        c.attributes['alignments'])
+            cs, cs_alignment = stringyfied_amr(c.graph, c.attributes['snt'], c.attributes['alignments'])
 
-            c.add_attribute('caveman_string', caveman_string)
-            c.add_attribute('caveman_alignment', caveman_alignments_string)
+            c.add_attribute('caveman_string', cs)
+            c.add_attribute('caveman_alignment', cs_alignment)
             print str(c)
 
 

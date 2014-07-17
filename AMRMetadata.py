@@ -5,13 +5,16 @@ from AMRGraph import AMRGraph
 
 
 class AMRMetadata():
-    def __init__(self, s):
+    def __init__(self, s, parse=False):
         self.attributes = {}
         self.graph_string = None
         self.attributes, self.graph_string = self.divide_text(s)
         self.graph = AMRGraph()
-        self.graph.parse_string(self.graph_string)
+        if parse:
+            self.parse_graph()
 
+    def parse_graph(self):
+        self.graph.parse_string(self.graph_string)
 
     def divide_text(self, s):
         '''
