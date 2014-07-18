@@ -45,7 +45,6 @@ if __name__ == '__main__':
         if item.strip() != '':
             c = AMRMetadata(item)
             c.parse_graph()
-            # pprint(dict(c.graph.nodes_to_children))
             cs, cs_alignment = stringyfied_amr(c.graph, c.attributes['tok'], c.attributes['alignments'])
             c.add_attribute('caveman_string', cs)
             c.add_attribute('caveman_alignment', cs_alignment)
