@@ -2,11 +2,12 @@ __author__ = 'arenduchintala'
 import re
 from collections import defaultdict
 
-global RE_ENTERENCY, ROOT, POLARITY, NUMERICAL_QUANT
+global RE_ENTERENCY, ROOT, POLARITY, NUMERICAL_QUANT, NON_REFERENTIAL_ITEMS
 RE_ENTERENCY = 'RE-ENTERENCY'
 ROOT = 'ROOT'
 POLARITY = 'POLARITY'
 NUMERICAL_QUANT = 'NUMERICAL_QUANT'
+NON_REFERENTIAL_ITEMS = ['-', 'interrogative', 'imperative', 'expressive']
 
 
 class Node():  # not used at the moment
@@ -148,8 +149,11 @@ class AMRGraph():
             branch = int(sequence.pop(0))
             node_labels = []
             for x in self.nodes_to_children[node_label]:
-                if x[0] == RE_ENTERENCY and x[-1] in self.nodes_to_concepts:
-                    pass  # 'this is a re-enterency so we skip this
+                if x[0] == RE_ENTERENCY:
+                    if x[-1] in self.nodes_to_concepts:
+                        pass  # 'this is a re-enterency so we skip this
+                    else:
+                        pass  # this is a weird case!
                 else:
                     node_labels.append(x[-1])  # the last item in the tuple is the node variable
             node_label = node_labels[branch]
@@ -186,7 +190,7 @@ class AMRGraph():
                         n_variable = ns[0]
                         # edge_term = NUMERICAL_QUANT
                     except ValueError:
-                        if ns[0].strip() == '-':
+                        if ns[0].strip() in NON_REFERENTIAL_ITEMS:
                             n_variable = ns[0]
                             # edge_term = POLARITY
                         else:
@@ -200,6 +204,11 @@ class AMRGraph():
 
 
 if __name__ == '__main__':
+    s = '(a  /  and  :op2  (r  /  repeat-01  :ARG0  (h  /  he)  :ARG1  (d  /  draw-01  :mode  imperative  :ARG0  (y2  /  you)  :ARG1  (s3  /  sheep)  :ARG2  (i  /  i)  :condition  (p  /  please-01  :ARG1  (y  /  you)))  :purpose  (a2  /  answer-01  :ARG0  h)  :manner  (s  /  slow  :degree  (v  /  very))  :conj-as-if  (s2  /  speak-01  :ARG0  h  :ARG1  (m  /  matter  :consist-of  (c  /  consequence  :degree  (g  /  great))))))  '
+    b = AMRGraph()
+    b.parse_string(s)
+    assert b.get_concept('0.0.1.4'.split('.')) == 'please-01'
+
     s = '(s / see-01 :ARG0 (i / i) :ARG1 (p / picture :mod (m / magnificent) :location (b2 / book :name (n / name ' \
         ':op1 "True" :op2 "Stories" :op3 "from" :op4 "Nature") :topic (f / forest :mod (p2 / primeval)))) :mod (o / once) :time (a / age-01 :ARG1 i :ARG2 (t / temporal-quantity :quant 6 :unit (y / year))))'
     b = AMRGraph()

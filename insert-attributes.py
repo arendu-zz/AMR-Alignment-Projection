@@ -16,7 +16,7 @@ if __name__ == '__main__':
     attr_list = []
     attr_names = options.attribute_names.split(',')
     for af in attr_files:
-        attr_list.append(open(af, 'r').readlines())
+        attr_list.append(open(af.strip(), 'r').readlines())
 
     for idx, item in enumerate(open(options.amr_file, 'r').read().split('\n\n')):
         if item.strip() != '':

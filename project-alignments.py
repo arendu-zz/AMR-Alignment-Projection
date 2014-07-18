@@ -40,7 +40,6 @@ if __name__ == '__main__':
     opt = OptionParser()
     opt.add_option("-f", dest="amr_file", help="AMR File with alignments", default="data/Little_Prince/test.aligned")
     (options, args) = opt.parse_args()
-
     for item in open(options.amr_file, 'r').read().split('\n\n'):
         if item.strip() != '':
             c = AMRMetadata(item)
