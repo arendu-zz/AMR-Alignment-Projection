@@ -5,6 +5,9 @@ from optparse import OptionParser
 from AMRMetadata import AMRMetadata
 from collections import defaultdict
 
+global verbose
+verbose = False
+
 
 def stringyfied_amr(g, s, a):
     """
@@ -22,7 +25,8 @@ def stringyfied_amr(g, s, a):
     for span, align in alignments.items():
         caveman_alignments[int(span[0]), int(span[1])] = '+'.join(align)
         for seq in align:
-            print 'getting concept at', seq, 'for span', span
+            if verbose:
+                print 'getting concept at', seq, 'for span', span
             concept = g.get_concept(seq.split('.'))
             span_concepts[int(span[0]), int(span[1])].append(concept)
     caveman_string = ''

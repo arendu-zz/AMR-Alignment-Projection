@@ -30,7 +30,7 @@ class AMRMetadata():
             else:
                 graph_lines.append(line)
         graph = '\n'.join(graph_lines)
-        meta_items = re.split('(\::[a-zA-Z-]+\s)', meta)
+        meta_items = re.split('(\::[a-zA-Z-_]+\s)', meta)
         attributes = {}
         for idx, mi in enumerate(meta_items):
             if mi.startswith('::'):
