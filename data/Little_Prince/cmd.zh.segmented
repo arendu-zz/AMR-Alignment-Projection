@@ -1,0 +1,1 @@
+segment.sh ctb amr-bank-struct-v1.3.txt.zh UTF-8 0 > zh.segmented
