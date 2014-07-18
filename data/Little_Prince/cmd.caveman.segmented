@@ -1,0 +1,2 @@
+python project-alignments.py -f data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned > data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned.caveman
+python extract-attributes.py -f data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned.caveman -a caveman_string > data/Little_Prince/caveman.segmented
