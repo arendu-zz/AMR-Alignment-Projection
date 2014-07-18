@@ -20,15 +20,25 @@ def stringyfied_amr(g, s, a):
     """
     alignments = dict((tuple(x.split('|')[0].split('-')), x.split('|')[1].split('+')) for x in a.split())
     # print alignments
+
+
     span_concepts = defaultdict(list)
     caveman_alignments = {}
-    for span, align in alignments.items():
-        caveman_alignments[int(span[0]), int(span[1])] = '+'.join(align)
-        for seq in align:
-            if verbose:
-                print 'getting concept at', seq, 'for span', span
-            concept = g.get_concept(seq.split('.'))
-            span_concepts[int(span[0]), int(span[1])].append(concept)
+    if len(alignments) == 0:
+        concept = g.get_concept([0])
+        span_concepts[0, len(s)].append(concept)
+        caveman_alignments[0, len(s)] = '0'
+    else:
+        for span, align in alignments.items():
+            caveman_alignments[int(span[0]), int(span[1])] = '+'.join(align)
+            for seq in align:
+                if seq.strip() == '':
+                    pass
+                if verbose:
+                    print 'getting concept at', seq, 'for span', span
+                concept = g.get_concept(seq.split('.'))
+                span_concepts[int(span[0]), int(span[1])].append(concept)
+
     caveman_string = ''
     caveman_alignments_string = ''
     i = 0
