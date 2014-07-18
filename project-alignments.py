@@ -22,7 +22,7 @@ def stringyfied_amr(g, s, a):
     for span, align in alignments.items():
         caveman_alignments[int(span[0]), int(span[1])] = '+'.join(align)
         for seq in align:
-            # print 'getting concept at', seq, 'for span', span
+            print 'getting concept at', seq, 'for span', span
             concept = g.get_concept(seq.split('.'))
             span_concepts[int(span[0]), int(span[1])].append(concept)
     caveman_string = ''
@@ -44,9 +44,8 @@ if __name__ == '__main__':
     for item in open(options.amr_file, 'r').read().split('\n\n'):
         if item.strip() != '':
             c = AMRMetadata(item)
-            # pprint(dict(c.graph.nodes_to_children))
-            cs, cs_alignment = stringyfied_amr(c.graph, c.attributes['snt'], c.attributes['alignments'])
-
+            c.parse_graph()
+            cs, cs_alignment = stringyfied_amr(c.graph, c.attributes['tok'], c.attributes['alignments'])
             c.add_attribute('caveman_string', cs)
             c.add_attribute('caveman_alignment', cs_alignment)
             print str(c)
