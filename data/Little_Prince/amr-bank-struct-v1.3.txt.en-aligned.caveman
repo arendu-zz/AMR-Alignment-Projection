@@ -2232,12 +2232,12 @@
 # ::preferred 
 # ::tok " Why ? "
 # ::snt " Why ? "
-# ::caveman_string 
+# ::caveman_string cause-01 
 # ::file lpp_1943_95.txt
 # ::date 2014-07-12T11:46:24.007
 # ::alignments 
 # ::id lpp_1943.95
-# ::caveman_alignment 
+# ::caveman_alignment 0-1|0 
 (c / cause-01
       :ARG0 (a / amr-unknown))
 
@@ -6300,12 +6300,12 @@
 # ::preferred 
 # ::tok For what ? "
 # ::snt For what ? "
-# ::caveman_string 
+# ::caveman_string wait-01 
 # ::file lpp_1943_272.txt
 # ::date 2014-07-12T11:46:25.498
 # ::alignments 
 # ::id lpp_1943.272
-# ::caveman_alignment 
+# ::caveman_alignment 0-1|0 
 (w / wait-01
       :ARG2 (a / amr-unknown))
 
@@ -7695,12 +7695,12 @@
 # ::preferred 
 # ::tok " A what ? "
 # ::snt " A what ? "
-# ::caveman_string 
+# ::caveman_string amr-unknown 
 # ::file lpp_1943_339.txt
 # ::date 2014-07-12T11:46:25.847
 # ::alignments 
 # ::id lpp_1943.339
-# ::caveman_alignment 
+# ::caveman_alignment 0-1|0 
 (a / amr-unknown)
 
 
@@ -15026,12 +15026,12 @@
 # ::preferred 
 # ::tok " Millions of what ? "
 # ::snt " Millions of what ? "
-# ::caveman_string 
+# ::caveman_string amr-unknown 
 # ::file lpp_1943_681.txt
 # ::date 2014-07-12T11:46:27.500
 # ::alignments 
 # ::id lpp_1943.681
-# ::caveman_alignment 
+# ::caveman_alignment 0-1|0 
 (a / amr-unknown
   :quant (m / multiple
            :op1 1000000))
@@ -15322,12 +15322,12 @@
 # ::preferred 
 # ::tok " Five - hundred - and - one million , six - hundred - twenty - two thousand , seven - hundred - thirty - one .
 # ::snt " Five - hundred - and - one million , six - hundred - twenty - two thousand , seven - hundred - thirty - one .
-# ::caveman_string 
+# ::caveman_string numerical-quantity 
 # ::file lpp_1943_697.txt
 # ::date 2014-07-12T11:46:27.552
 # ::alignments 
 # ::id lpp_1943.697
-# ::caveman_alignment 
+# ::caveman_alignment 0-1|0 
 (n / numerical-quantity :quant 501622731)
 
 
@@ -26586,12 +26586,12 @@
 # ::preferred 
 # ::tok " Why not ? "
 # ::snt " Why not ? "
-# ::caveman_string 
+# ::caveman_string concern-02 
 # ::file lpp_1943_1224.txt
 # ::date 2014-07-12T11:46:29.975
 # ::alignments 
 # ::id lpp_1943.1224
-# ::caveman_alignment 
+# ::caveman_alignment 0-1|0 
 (c2 / concern-02
   :polarity -
   :ARG1-of (c3 / cause-01
