@@ -4,6 +4,7 @@ __author__ = 'arenduchintala'
 from optparse import OptionParser
 from AMRMetadata import AMRMetadata
 from collections import defaultdict
+from AMRLists import NE_ONTOLOGY
 
 global verbose
 verbose = False
@@ -37,7 +38,8 @@ def stringyfied_amr(g, s, a):
                 if verbose:
                     print 'getting concept at', seq, 'for span', span
                 concept = g.get_concept(seq.split('.'))
-                span_concepts[int(span[0]), int(span[1])].append(concept)
+                if concept not in NE_ONTOLOGY:
+                    span_concepts[int(span[0]), int(span[1])].append(concept)
 
     caveman_string = ''
     caveman_alignments_string = ''
