@@ -120,8 +120,10 @@ class AMRGraph():
                     p = self.stack_nodes[-1]
                     if self.check_label_exceptions(e2c):
                         self.nodes_to_children[p].append((e2c, e4p, nv))
+                        self.nodes_to_parents[nv].append((e2c, e4p, p))
                     else:
                         self.nodes_to_children[p].append((e4p, nv))
+                        self.nodes_to_parents[nv].append((e4p, p))
 
                 self.append_stacks(nv, e2c)
                 i += 2  # move 2 steps forward
