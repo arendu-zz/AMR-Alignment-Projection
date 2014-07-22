@@ -5,6 +5,7 @@ ISSUES DISCUSSED
 
 TODOs
 =====
+- fast align fails because some lines don't have any alignment (must address this)
 - NE rules, dates , quants etc
 When generating the caveman string we should drop the Named entity ontology nodes, since these
 are not likely to have surface realizations in the source language. (this is implemented)

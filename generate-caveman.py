@@ -5,6 +5,7 @@ from optparse import OptionParser
 from AMRMetadata import AMRMetadata
 from collections import defaultdict
 from AMRLists import NE_ONTOLOGY
+import pdb
 
 global verbose
 verbose = False
@@ -40,6 +41,10 @@ def stringyfied_amr(g, s, a):
                 concept = g.get_concept(seq.split('.'))
                 if concept not in NE_ONTOLOGY:  # filters out NE concepts from appearing in the caveman string
                     span_concepts[int(span[0]), int(span[1])].append(concept)
+                elif concept in s:  # accepts NE concepts if the concept is present in the english string directly
+                    span_concepts[int(span[0]), int(span[1])].append(concept)
+                else:
+                    pass
 
     caveman_string = ''
     caveman_alignments_string = ''
