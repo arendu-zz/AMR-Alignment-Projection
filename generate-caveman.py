@@ -23,7 +23,6 @@ def stringyfied_amr(g, s, a):
     alignments = dict((tuple(x.split('|')[0].split('-')), x.split('|')[1].split('+')) for x in a.split())
     # print alignments
 
-
     span_concepts = defaultdict(list)
     caveman_alignments = {}
     if len(alignments) == 0:
