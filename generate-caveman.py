@@ -38,7 +38,7 @@ def stringyfied_amr(g, s, a):
                 if verbose:
                     print 'getting concept at', seq, 'for span', span
                 concept = g.get_concept(seq.split('.'))
-                if concept not in NE_ONTOLOGY:
+                if concept not in NE_ONTOLOGY:  # filters out NE concepts from appearing in the caveman string
                     span_concepts[int(span[0]), int(span[1])].append(concept)
 
     caveman_string = ''
