@@ -11,4 +11,4 @@ rm  data/Little_Prince/zh.unseg
 
 python join.py -z data/Little_Prince/zh.segmented  -c data/Little_Prince/caveman.segmented  > data/Little_Prince/zh-caveman
 
-fast_align ctb -i data/Little_Prince/zh-caveman UTF-8 0 > data/Little_Prince/zh-caveman.alignment
+fast_align ctb -i data/Little_Prince/zh-caveman UTF-8 0 > data/Little_Prince/zh-caveman.alignments
