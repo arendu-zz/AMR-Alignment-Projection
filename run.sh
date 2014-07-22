@@ -1,5 +1,7 @@
 #!/bin/bash
-python project-alignments.py -f data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned > data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned.caveman
+python generate-caveman.py -f data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned >
+data/Little_Prince/amr-bank-struct-v1.3.txt
+.en-aligned.caveman
 
 python extract-attributes.py -f data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned -a zh > data/Little_Prince/zh.unseg
 
