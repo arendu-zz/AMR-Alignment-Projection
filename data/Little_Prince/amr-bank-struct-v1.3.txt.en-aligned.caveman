@@ -20,12 +20,12 @@
 # ::preferred 
 # ::tok Once when I was six years old I saw a magnificent picture in a book , called True Stories from Nature , about the primeval forest .
 # ::snt Once when I was six years old I saw a magnificent picture in a book , called True Stories from Nature , about the primeval forest .
-# ::caveman_string once i 6 temporal-quantity year see-01 magnificent picture book True Stories from Nature primeval forest 
+# ::caveman_string once i 6 year see-01 magnificent picture book True Stories from Nature primeval forest 
 # ::file lpp_1943_2.txt
 # ::date 2014-07-12T11:46:21.958
 # ::alignments 17-21|0.1.1.0+0.1.1.0.0+0.1.1.0.1+0.1.1.0.2+0.1.1.0.3 8-9|0 4-5|0.3.0.0 5-6|0.3.0+0.3.0.1 0-1|0.2 11-12|0.1 14-15|0.1.1 25-26|0.1.1.1 24-25|0.1.1.1.0 10-11|0.1.0 2-3|0.0
 # ::id lpp_1943.2
-# ::caveman_alignment 0-1|0.2 1-2|0.0 2-3|0.3.0.0 3-5|0.3.0+0.3.0.1 5-6|0 6-7|0.1.0 7-8|0.1 8-9|0.1.1 9-13|0.1.1.0+0.1.1.0.0+0.1.1.0.1+0.1.1.0.2+0.1.1.0.3 13-14|0.1.1.1.0 14-15|0.1.1.1 
+# ::caveman_alignment 0-1|0.2 1-2|0.0 2-3|0.3.0.0 3-4|0.3.0+0.3.0.1 4-5|0 5-6|0.1.0 6-7|0.1 7-8|0.1.1 8-12|0.1.1.0+0.1.1.0.0+0.1.1.0.1+0.1.1.0.2+0.1.1.0.3 12-13|0.1.1.1.0 13-14|0.1.1.1 
 (s / see-01
       :ARG0 (i / i)
       :ARG1 (p / picture
@@ -111,12 +111,12 @@
 # ::preferred 
 # ::tok After that they are not able to move , and they sleep through the six months that they need for digestion . "
 # ::snt After that they are not able to move , and they sleep through the six months that they need for digestion . "
-# ::caveman_string after that they possible move-01 and sleep-01 6 temporal-quantity month need-01 digest-01 
+# ::caveman_string after that they possible move-01 and sleep-01 6 month need-01 digest-01 
 # ::file lpp_1943_6.txt
 # ::date 2014-07-12T11:46:22.249
 # ::alignments 9-10|0 11-12|0.1 14-15|0.1.0.0 15-16|0.1.0+0.1.0.1 18-19|0.1.0.2 5-6|0.0 7-8|0.0.1 0-1|0.0.1.1 1-2|0.0.1.1.0 2-3|0.0.1.0 20-21|0.1.0.2.0
 # ::id lpp_1943.6
-# ::caveman_alignment 0-1|0.0.1.1 1-2|0.0.1.1.0 2-3|0.0.1.0 3-4|0.0 4-5|0.0.1 5-6|0 6-7|0.1 7-8|0.1.0.0 8-10|0.1.0+0.1.0.1 10-11|0.1.0.2 11-12|0.1.0.2.0 
+# ::caveman_alignment 0-1|0.0.1.1 1-2|0.0.1.1.0 2-3|0.0.1.0 3-4|0.0 4-5|0.0.1 5-6|0 6-7|0.1 7-8|0.1.0.0 8-9|0.1.0+0.1.0.1 9-10|0.1.0.2 10-11|0.1.0.2.0 
 (a / and
       :op1 (p / possible :polarity -
             :domain (m / move-01
@@ -858,12 +858,12 @@
 # ::preferred 
 # ::tok So I lived my life alone , without anyone that I could really talk to , until I had an accident with my plane in the Desert of Sahara , six years ago .
 # ::snt So I lived my life alone , without anyone that I could really talk to , until I had an accident with my plane in the Desert of Sahara , six years ago .
-# ::caveman_string i live-01 life alone anyone really talk-01 until have-06 accident plane Desert of Sahara 6 temporal-quantity year 
+# ::caveman_string i live-01 life alone anyone really talk-01 until have-06 accident plane Desert of Sahara 6 year 
 # ::file lpp_1943_37.txt
 # ::date 2014-07-12T11:46:23.170
 # ::alignments 26-29|0.0.3.0.1+0.0.3.0.1.0+0.0.3.0.1.0.0+0.0.3.0.1.0.1+0.0.3.0.1.0.2 2-3|0.0 16-17|0.0.3 18-19|0.0.3.0 30-31|0.0.3.0.2.1.0 31-32|0.0.3.0.2.1+0.0.3.0.2.1.1 20-21|0.0.3.0.0 23-24|0.0.3.0.0.0 5-6|0.0.2 4-5|0.0.1 1-2|0.0.0 13-14|0.0.0.0 12-13|0.0.0.0.2 8-9|0.0.0.0.1
 # ::id lpp_1943.37
-# ::caveman_alignment 0-1|0.0.0 1-2|0.0 2-3|0.0.1 3-4|0.0.2 4-5|0.0.0.0.1 5-6|0.0.0.0.2 6-7|0.0.0.0 7-8|0.0.3 8-9|0.0.3.0 9-10|0.0.3.0.0 10-11|0.0.3.0.0.0 11-14|0.0.3.0.1+0.0.3.0.1.0+0.0.3.0.1.0.0+0.0.3.0.1.0.1+0.0.3.0.1.0.2 14-15|0.0.3.0.2.1.0 15-17|0.0.3.0.2.1+0.0.3.0.2.1.1 
+# ::caveman_alignment 0-1|0.0.0 1-2|0.0 2-3|0.0.1 3-4|0.0.2 4-5|0.0.0.0.1 5-6|0.0.0.0.2 6-7|0.0.0.0 7-8|0.0.3 8-9|0.0.3.0 9-10|0.0.3.0.0 10-11|0.0.3.0.0.0 11-14|0.0.3.0.1+0.0.3.0.1.0+0.0.3.0.1.0.0+0.0.3.0.1.0.1+0.0.3.0.1.0.2 14-15|0.0.3.0.2.1.0 15-16|0.0.3.0.2.1+0.0.3.0.2.1.1 
 (c / cause-01
       :ARG1 (l / live-01
             :ARG0 (i / i
@@ -939,12 +939,12 @@
 # ::preferred 
 # ::tok It was a question of life or death for me : I had scarcely enough drinking water to last a week .
 # ::snt It was a question of life or death for me : I had scarcely enough drinking water to last a week .
-# ::caveman_string question-01 or die-01 i have-03 scarcely enough drink-01 water last-01 temporal-quantity week 
+# ::caveman_string question-01 or die-01 i have-03 scarcely enough drink-01 water last-01 week 
 # ::file lpp_1943_40.txt
 # ::date 2014-07-12T11:46:23.232
 # ::alignments 3-4|0 12-13|0.1.0 16-17|0.1.0.1 18-19|0.1.0.1.2 20-21|0.1.0.1.2.0+0.1.0.1.2.0.0 14-15|0.1.0.1.1 13-14|0.1.0.1.1.0 15-16|0.1.0.1.0 11-12|0.1.0.0 6-7|0.0 7-8|0.0.1
 # ::id lpp_1943.40
-# ::caveman_alignment 0-1|0 1-2|0.0 2-3|0.0.1 3-4|0.1.0.0 4-5|0.1.0 5-6|0.1.0.1.1.0 6-7|0.1.0.1.1 7-8|0.1.0.1.0 8-9|0.1.0.1 9-10|0.1.0.1.2 10-12|0.1.0.1.2.0+0.1.0.1.2.0.0 
+# ::caveman_alignment 0-1|0 1-2|0.0 2-3|0.0.1 3-4|0.1.0.0 4-5|0.1.0 5-6|0.1.0.1.1.0 6-7|0.1.0.1.1 7-8|0.1.0.1.0 8-9|0.1.0.1 9-10|0.1.0.1.2 10-11|0.1.0.1.2.0+0.1.0.1.2.0.0 
 (q / question-01
   :ARG0 i
   :ARG1 (o / or
@@ -970,12 +970,12 @@
 # ::preferred 
 # ::tok The first night , then , I went to sleep on the sand , a thousand miles from any human habitation .
 # ::snt The first night , then , I went to sleep on the sand , a thousand miles from any human habitation .
-# ::caveman_string night i sleep-01 sand distance-quantity mile any human 
+# ::caveman_string night i sleep-01 sand mile any human 
 # ::file lpp_1943_41.txt
 # ::date 2014-07-12T11:46:23.256
 # ::alignments 9-10|0 19-20|0.3.0.0.0 18-19|0.3.0.1 16-17|0.3.1+0.3.1.0 2-3|0.2 12-13|0.1 6-7|0.0
 # ::id lpp_1943.41
-# ::caveman_alignment 0-1|0.2 1-2|0.0 2-3|0 3-4|0.1 4-6|0.3.1+0.3.1.0 6-7|0.3.0.1 7-8|0.3.0.0.0 
+# ::caveman_alignment 0-1|0.2 1-2|0.0 2-3|0 3-4|0.1 4-5|0.3.1+0.3.1.0 5-6|0.3.0.1 6-7|0.3.0.0.0 
 (s / sleep-01
   :ARG0 (i / i)
   :location (s2 / sand)
@@ -1261,12 +1261,12 @@
 # ::preferred 
 # ::tok The grown - ups discouraged me in my painter 's career when I was six years old , and I never learned to draw anything , except boas from the outside and boas from the inside .
 # ::snt The grown - ups discouraged me in my painter 's career when I was six years old , and I never learned to draw anything , except boas from the outside and boas from the inside .
-# ::caveman_string grown-up discourage-01 paint-02 career i 6 temporal-quantity year and learn-01 draw-01 anything boa outside boa inside 
+# ::caveman_string grown-up discourage-01 paint-02 career i 6 year and learn-01 draw-01 anything boa outside boa inside 
 # ::file lpp_1943_54.txt
 # ::date 2014-07-12T11:46:23.445
 # ::alignments 4-5|0 15-16|0.4.0+0.4.0.0 14-15|0.4.0.1 21-22|0.3.0 18-19|0.3.0.2 27-28|0.3.0.2.1 35-36|0.3.0.2.1.0 32-33|0.3.0.2.0 30-31|0.3.0.2.0.0 23-24|0.3.0.0 24-25|0.3.0.0.0 10-11|0.2 8-9|0.2.0 12-13|0.1 1-2|0.0
 # ::id lpp_1943.54
-# ::caveman_alignment 0-1|0.0 1-2|0 2-3|0.2.0 3-4|0.2 4-5|0.1 5-6|0.4.0.1 6-8|0.4.0+0.4.0.0 8-9|0.3.0.2 9-10|0.3.0 10-11|0.3.0.0 11-12|0.3.0.0.0 12-13|0.3.0.2.1 13-14|0.3.0.2.0.0 14-15|0.3.0.2.0 15-16|0.3.0.2.1.0 
+# ::caveman_alignment 0-1|0.0 1-2|0 2-3|0.2.0 3-4|0.2 4-5|0.1 5-6|0.4.0.1 6-7|0.4.0+0.4.0.0 7-8|0.3.0.2 8-9|0.3.0 9-10|0.3.0.0 10-11|0.3.0.0.0 11-12|0.3.0.2.1 12-13|0.3.0.2.0.0 13-14|0.3.0.2.0 14-15|0.3.0.2.1.0 
 (d / discourage-01
   :ARG0 (g / grown-up)
   :ARG1 (i / i)
@@ -1330,12 +1330,12 @@
 # ::preferred 
 # ::tok Remember , I had crashed in the desert a thousand miles from any inhabited region .
 # ::snt Remember , I had crashed in the desert a thousand miles from any inhabited region .
-# ::caveman_string remember-01 i crash-01 desert distance-quantity mile any inhabit-01 region 
+# ::caveman_string remember-01 i crash-01 desert mile any inhabit-01 region 
 # ::file lpp_1943_56.txt
 # ::date 2014-07-12T11:46:23.481
 # ::alignments 0-1|0 4-5|0.1 14-15|0.1.2.0 12-13|0.1.2.0.1 13-14|0.1.2.0.0 10-11|0.1.2.1+0.1.2.1.0 7-8|0.1.1 2-3|0.1.0
 # ::id lpp_1943.56
-# ::caveman_alignment 0-1|0 1-2|0.1.0 2-3|0.1 3-4|0.1.1 4-6|0.1.2.1+0.1.2.1.0 6-7|0.1.2.0.1 7-8|0.1.2.0.0 8-9|0.1.2.0 
+# ::caveman_alignment 0-1|0 1-2|0.1.0 2-3|0.1 3-4|0.1.1 4-5|0.1.2.1+0.1.2.1.0 5-6|0.1.2.0.1 6-7|0.1.2.0.0 7-8|0.1.2.0 
 (r / remember-01
   :ARG0 (y / you)
   :ARG1 (c / crash-01
@@ -1393,12 +1393,12 @@
 # ::preferred 
 # ::tok Nothing about him gave any suggestion of a child lost in the middle of the desert , a thousand miles from any human habitation .
 # ::snt Nothing about him gave any suggestion of a child lost in the middle of the desert , a thousand miles from any human habitation .
-# ::caveman_string nothing any suggest-01 child lose-02 middle desert distance-quantity mile human 
+# ::caveman_string nothing any suggest-01 child lose-02 middle desert mile human 
 # ::file lpp_1943_58.txt
 # ::date 2014-07-12T11:46:23.535
 # ::alignments 0-1|0.0 8-9|0.1 9-10|0.1.0 22-23|0.1.0.1.0.0.0 4-5|0.1.0.1.0.1 19-20|0.1.0.1.1+0.1.0.1.1.0 15-16|0.1.0.0 12-13|0.1.0.0.0 5-6|0
 # ::id lpp_1943.58
-# ::caveman_alignment 0-1|0.0 1-2|0.1.0.1.0.1 2-3|0 3-4|0.1 4-5|0.1.0 5-6|0.1.0.0.0 6-7|0.1.0.0 7-9|0.1.0.1.1+0.1.0.1.1.0 9-10|0.1.0.1.0.0.0 
+# ::caveman_alignment 0-1|0.0 1-2|0.1.0.1.0.1 2-3|0 3-4|0.1 4-5|0.1.0 5-6|0.1.0.0.0 6-7|0.1.0.0 7-8|0.1.0.1.1+0.1.0.1.1.0 8-9|0.1.0.1.0.0.0 
 (s / suggest-01
   :ARG0 (n / nothing
           :topic (h / he))
@@ -1504,12 +1504,12 @@
 # ::preferred 
 # ::tok Absurd as it might seem to me , a thousand miles from any human habitation and in danger of death , I took out of my pocket a sheet of paper and my fountain - pen .
 # ::snt Absurd as it might seem to me , a thousand miles from any human habitation and in danger of death , I took out of my pocket a sheet of paper and my fountain - pen .
-# ::caveman_string absurd seem-01 distance-quantity mile any human and danger die-01 i take-11 pocket sheet paper fountain pen 
+# ::caveman_string absurd seem-01 mile any human and danger die-01 i take-11 pocket sheet paper fountain pen 
 # ::file lpp_1943_62.txt
 # ::date 2014-07-12T11:46:23.611
 # ::alignments 22-23|0 12-13|0.5.0.0 13-14|0.5.0.1.0 10-11|0.5.1+0.5.1.0 4-5|0.4.0 0-1|0.4.0.0 17-18|0.3 19-20|0.3.0 26-27|0.2 15-16|0.1 35-36|0.1.1 33-34|0.1.1.0 30-31|0.1.0 28-29|0.1.0.0 21-22|0.0
 # ::id lpp_1943.62
-# ::caveman_alignment 0-1|0.4.0.0 1-2|0.4.0 2-4|0.5.1+0.5.1.0 4-5|0.5.0.0 5-6|0.5.0.1.0 6-7|0.1 7-8|0.3 8-9|0.3.0 9-10|0.0 10-11|0 11-12|0.2 12-13|0.1.0.0 13-14|0.1.0 14-15|0.1.1.0 15-16|0.1.1 
+# ::caveman_alignment 0-1|0.4.0.0 1-2|0.4.0 2-3|0.5.1+0.5.1.0 3-4|0.5.0.0 4-5|0.5.0.1.0 5-6|0.1 6-7|0.3 7-8|0.3.0 8-9|0.0 9-10|0 10-11|0.2 11-12|0.1.0.0 12-13|0.1.0 13-14|0.1.1.0 14-15|0.1.1 
 (t / take-11
   :ARG0 (i / i)
   :ARG1 (a / and
@@ -3523,12 +3523,12 @@
 # ::preferred 
 # ::tok That was by a Turkish astronomer , in 1909 .
 # ::snt That was by a Turkish astronomer , in 1909 .
-# ::caveman_string country Turkey astronomer date-entity 1909 
+# ::caveman_string country Turkey astronomer 1909 
 # ::file lpp_1943_154.txt
 # ::date 2014-07-12T11:46:24.570
 # ::alignments 4-5|0.0.0+0.0.0.0+0.0.0.0.0 8-9|0.1+0.1.0 5-6|0.0
 # ::id lpp_1943.154
-# ::caveman_alignment 0-2|0.0.0+0.0.0.0+0.0.0.0.0 2-3|0.0 3-5|0.1+0.1.0 
+# ::caveman_alignment 0-2|0.0.0+0.0.0.0+0.0.0.0.0 2-3|0.0 3-4|0.1+0.1.0 
 (s / see-01
       :ARG0 (a / astronomer
             :mod (c / country
@@ -3643,12 +3643,12 @@
 # ::preferred 
 # ::tok So in 1920 the astronomer gave his demonstration all over again , dressed with impressive style and elegance .
 # ::snt So in 1920 the astronomer gave his demonstration all over again , dressed with impressive style and elegance .
-# ::caveman_string date-entity 1920 astronomer demonstrate-01 all over again dress-01 impress-01 style and elegance 
+# ::caveman_string 1920 astronomer demonstrate-01 all over again dress-01 impress-01 style and elegance 
 # ::file lpp_1943_159.txt
 # ::date 2014-07-12T11:46:24.644
 # ::alignments 2-3|0.0.2+0.0.2.0 4-5|0.0.0 12-13|0.0.0.0 16-17|0.0.0.0.0 17-18|0.0.0.0.0.1 15-16|0.0.0.0.0.0 8-9|0.0.1 9-10|0.0.1.0 10-11|0.0.1.0.0 7-8|0.0 14-15|0.0.0.0.0.2
 # ::id lpp_1943.159
-# ::caveman_alignment 0-2|0.0.2+0.0.2.0 2-3|0.0.0 3-4|0.0 4-5|0.0.1 5-6|0.0.1.0 6-7|0.0.1.0.0 7-8|0.0.0.0 8-9|0.0.0.0.0.2 9-10|0.0.0.0.0.0 10-11|0.0.0.0.0 11-12|0.0.0.0.0.1 
+# ::caveman_alignment 0-1|0.0.2+0.0.2.0 1-2|0.0.0 2-3|0.0 3-4|0.0.1 4-5|0.0.1.0 5-6|0.0.1.0.0 6-7|0.0.0.0 7-8|0.0.0.0.0.2 8-9|0.0.0.0.0.0 9-10|0.0.0.0.0 10-11|0.0.0.0.0.1 
 (c / cause-01
       :ARG1 (d4 / demonstrate-01
             :ARG0 (a / astronomer
@@ -3872,12 +3872,12 @@
 # ::preferred 
 # ::tok How much money does his father make ? "
 # ::snt How much money does his father make ? "
-# ::caveman_string monetary-quantity father make-05 
+# ::caveman_string father make-05 
 # ::file lpp_1943_169.txt
 # ::date 2014-07-12T11:46:24.722
 # ::alignments 6-7|0 5-6|0.0.0.1 2-3|0.1
 # ::id lpp_1943.169
-# ::caveman_alignment 0-1|0.1 1-2|0.0.0.1 2-3|0 
+# ::caveman_alignment 0-1|0.0.0.1 1-2|0 
 (m / make-05
       :ARG0 (p / person
             :ARG0-of (h2 / have-rel-role-91
@@ -4331,12 +4331,12 @@
 # ::preferred 
 # ::tok Six years have already passed since my friend went away from me , with his sheep .
 # ::snt Six years have already passed since my friend went away from me , with his sheep .
-# ::caveman_string 6 temporal-quantity year have-rel-role-91 already friend go-02 away sheep 
+# ::caveman_string 6 year have-rel-role-91 already friend go-02 away sheep 
 # ::file lpp_1943_188.txt
 # ::date 2014-07-12T11:46:24.910
 # ::alignments 8-9|0 3-4|0.4 0-1|0.3.1.0 1-2|0.3.1+0.3.1.1 15-16|0.2 9-10|0.1 7-8|0.0.0.1 2-3|0.0+0.0.0
 # ::id lpp_1943.188
-# ::caveman_alignment 0-1|0.3.1.0 1-3|0.3.1+0.3.1.1 3-4|0.0+0.0.0 4-5|0.4 5-6|0.0.0.1 6-7|0 7-8|0.1 8-9|0.2 
+# ::caveman_alignment 0-1|0.3.1.0 1-2|0.3.1+0.3.1.1 2-3|0.0+0.0.0 3-4|0.4 4-5|0.0.0.1 5-6|0 6-7|0.1 7-8|0.2 
 (g / go-02
       :ARG0 (p / person
             :ARG0-of (h / have-rel-role-91
@@ -6452,12 +6452,12 @@
 # ::preferred 
 # ::tok If you could fly to France in one minute , you could go straight into the sunset , right from noon .
 # ::snt If you could fly to France in one minute , you could go straight into the sunset , right from noon .
-# ::caveman_string you possible fly-01 country France 1 temporal-quantity minute possible go-02 straight sunset 
+# ::caveman_string you possible fly-01 country France 1 minute possible go-02 straight sunset 
 # ::file lpp_1943_280.txt
 # ::date 2014-07-12T11:46:25.535
 # ::alignments 5-6|0.1.0.2+0.1.0.2.0+0.1.0.2.0.0 2-3|0 11-12|0.1 3-4|0.1.0 7-8|0.1.0.1.0 8-9|0.1.0.1+0.1.0.1.1 1-2|0.1.0.0 12-13|0.0 13-14|0.0.2 16-17|0.0.1
 # ::id lpp_1943.280
-# ::caveman_alignment 0-1|0.1.0.0 1-2|0 2-3|0.1.0 3-5|0.1.0.2+0.1.0.2.0+0.1.0.2.0.0 5-6|0.1.0.1.0 6-8|0.1.0.1+0.1.0.1.1 8-9|0.1 9-10|0.0 10-11|0.0.2 11-12|0.0.1 
+# ::caveman_alignment 0-1|0.1.0.0 1-2|0 2-3|0.1.0 3-5|0.1.0.2+0.1.0.2.0+0.1.0.2.0.0 5-6|0.1.0.1.0 6-7|0.1.0.1+0.1.0.1.1 7-8|0.1 8-9|0.0 9-10|0.0.2 10-11|0.0.1 
 (p / possible
       :domain (g / go-02
             :ARG0 y
@@ -7744,12 +7744,12 @@
 # ::preferred 
 # ::tok " The flowers have been growing thorns for millions of years .
 # ::snt " The flowers have been growing thorns for millions of years .
-# ::caveman_string flower grow-03 thorn temporal-quantity year 
+# ::caveman_string flower grow-03 thorn year 
 # ::file lpp_1943_342.txt
 # ::date 2014-07-12T11:46:25.859
 # ::alignments 5-6|0 10-11|0.2.0+0.2.0.1 6-7|0.1 2-3|0.0
 # ::id lpp_1943.342
-# ::caveman_alignment 0-1|0.0 1-2|0 2-3|0.1 3-5|0.2.0+0.2.0.1 
+# ::caveman_alignment 0-1|0.0 1-2|0 2-3|0.1 3-4|0.2.0+0.2.0.1 
 (g / grow-03
       :ARG0 (f / flower)
       :ARG1 (t / thorn)
@@ -7764,12 +7764,12 @@
 # ::preferred 
 # ::tok For millions of years the sheep have been eating them just the same .
 # ::snt For millions of years the sheep have been eating them just the same .
-# ::caveman_string temporal-quantity year sheep have-concession-91 eat-01 
+# ::caveman_string year sheep have-concession-91 eat-01 
 # ::file lpp_1943_343.txt
 # ::date 2014-07-12T11:46:25.866
 # ::alignments 8-9|0 3-4|0.2.0+0.2.0.1 5-6|0.0 6-7|0.3
 # ::id lpp_1943.343
-# ::caveman_alignment 0-2|0.2.0+0.2.0.1 2-3|0.0 3-4|0.3 4-5|0 
+# ::caveman_alignment 0-1|0.2.0+0.2.0.1 1-2|0.0 2-3|0.3 3-4|0 
 (e / eat-01
       :ARG0 (s / sheep)
       :ARG1 (t / they)
@@ -8699,12 +8699,12 @@
 # ::preferred 
 # ::tok And her mysterious adornment lasted for days and days .
 # ::snt And her mysterious adornment lasted for days and days .
-# ::caveman_string and mysterious adorn-01 last-01 temporal-quantity day 
+# ::caveman_string and mysterious adorn-01 last-01 day 
 # ::file lpp_1943_383.txt
 # ::date 2014-07-12T11:46:26.142
 # ::alignments 0-1|0 4-5|0.0 6-7|0.0.1.0+0.0.1.0.1 2-3|0.0.0.0.1 3-4|0.0.0+0.0.0.0
 # ::id lpp_1943.383
-# ::caveman_alignment 0-1|0 1-2|0.0.0.0.1 2-3|0.0.0+0.0.0.0 3-4|0.0 4-6|0.0.1.0+0.0.1.0.1 
+# ::caveman_alignment 0-1|0 1-2|0.0.0.0.1 2-3|0.0.0+0.0.0.0 3-4|0.0 4-5|0.0.1.0+0.0.1.0.1 
 (a / and
       :op1 (l / last-01
             :ARG1 (t / thing
@@ -12421,12 +12421,12 @@
 # ::preferred 
 # ::tok That will be about - - about - - that will be this evening about twenty minutes to eight .
 # ::snt That will be about - - about - - that will be this evening about twenty minutes to eight .
-# ::caveman_string that about this evening temporal-quantity minute 
+# ::caveman_string that about this evening minute 
 # ::file lpp_1943_556.txt
 # ::date 2014-07-12T11:46:26.992
 # ::alignments 0-1|0.0 13-14|0.1 16-17|0.1.1.0+0.1.1.0.1 3-4|0.1.1.1 12-13|0.1.0
 # ::id lpp_1943.556
-# ::caveman_alignment 0-1|0.0 1-2|0.1.1.1 2-3|0.1.0 3-4|0.1 4-6|0.1.1.0+0.1.1.0.1 
+# ::caveman_alignment 0-1|0.0 1-2|0.1.1.1 2-3|0.1.0 3-4|0.1 4-5|0.1.1.0+0.1.1.0.1 
 (b2 / be-temporally-at-91
       :ARG1 (t3 / that)
       :ARG2 (e3 / evening
@@ -13234,12 +13234,12 @@
 # ::preferred 
 # ::tok He should be able , for example , to order me to be gone by the end of one minute .
 # ::snt He should be able , for example , to order me to be gone by the end of one minute .
-# ::caveman_string he possible order-01 go-02 by end-01 1 temporal-quantity minute 
+# ::caveman_string he possible order-01 go-02 by end-01 1 minute 
 # ::file lpp_1943_596.txt
 # ::date 2014-07-12T11:46:27.146
 # ::alignments 3-4|0.0 9-10|0.0.0 13-14|0.0.0.2 14-15|0.0.0.2.0 16-17|0.0.0.2.0.0 18-19|0.0.0.2.0.0.0.0 19-20|0.0.0.2.0.0.0+0.0.0.2.0.0.0.1 0-1|0.0.0.0
 # ::id lpp_1943.596
-# ::caveman_alignment 0-1|0.0.0.0 1-2|0.0 2-3|0.0.0 3-4|0.0.0.2 4-5|0.0.0.2.0 5-6|0.0.0.2.0.0 6-7|0.0.0.2.0.0.0.0 7-9|0.0.0.2.0.0.0+0.0.0.2.0.0.0.1 
+# ::caveman_alignment 0-1|0.0.0.0 1-2|0.0 2-3|0.0.0 3-4|0.0.0.2 4-5|0.0.0.2.0 5-6|0.0.0.2.0.0 6-7|0.0.0.2.0.0.0.0 7-8|0.0.0.2.0.0.0+0.0.0.2.0.0.0.1 
 (e2 / exemplify-01
       :ARG0 (p / possible
             :domain (o / order-01
@@ -13763,12 +13763,12 @@
 # ::preferred 
 # ::tok After five minutes of this exercise the little prince grew tired of the game 's monotony .
 # ::snt After five minutes of this exercise the little prince grew tired of the game 's monotony .
-# ::caveman_string after 5 temporal-quantity minute exercise little prince tire-01 game monotony 
+# ::caveman_string after 5 minute exercise little prince tire-01 game monotony 
 # ::file lpp_1943_621.txt
 # ::date 2014-07-12T11:46:27.249
 # ::alignments 10-11|0 0-1|0.2 5-6|0.2.0 1-2|0.2.0.0.0 2-3|0.2.0.0+0.2.0.0.1 15-16|0.1 13-14|0.1.0 8-9|0.0 7-8|0.0.0
 # ::id lpp_1943.621
-# ::caveman_alignment 0-1|0.2 1-2|0.2.0.0.0 2-4|0.2.0.0+0.2.0.0.1 4-5|0.2.0 5-6|0.0.0 6-7|0.0 7-8|0 8-9|0.1.0 9-10|0.1 
+# ::caveman_alignment 0-1|0.2 1-2|0.2.0.0.0 2-3|0.2.0.0+0.2.0.0.1 3-4|0.2.0 4-5|0.0.0 5-6|0.0 6-7|0 7-8|0.1.0 8-9|0.1 
 (t / tire-01
       :ARG0 (p / prince
             :mod (l / little))
@@ -14847,12 +14847,12 @@
 # ::preferred 
 # ::tok " During the fifty - four years that I have inhabited this planet , I have been disturbed only three times .
 # ::snt " During the fifty - four years that I have inhabited this planet , I have been disturbed only three times .
-# ::caveman_string temporal-quantity year i have-frequency-91 inhabit-01 this planet disturb-01 only 3 
+# ::caveman_string year i have-frequency-91 inhabit-01 this planet disturb-01 only 3 
 # ::file lpp_1943_673.txt
 # ::date 2014-07-12T11:46:27.466
 # ::alignments 17-18|0 10-11|0.2 6-7|0.2.1+0.2.1.1 12-13|0.2.0 11-12|0.2.0.0 19-20|0.1.0 18-19|0.1.1 8-9|0.0 9-10|0.1
 # ::id lpp_1943.673
-# ::caveman_alignment 0-2|0.2.1+0.2.1.1 2-3|0.0 3-4|0.1 4-5|0.2 5-6|0.2.0.0 6-7|0.2.0 7-8|0 8-9|0.1.1 9-10|0.1.0 
+# ::caveman_alignment 0-1|0.2.1+0.2.1.1 1-2|0.0 2-3|0.1 3-4|0.2 4-5|0.2.0.0 5-6|0.2.0 6-7|0 7-8|0.1.1 8-9|0.1.0 
 (d / disturb-01
       :ARG1 (i / i)
       :ARG1-of (h / have-frequency-91
@@ -14872,12 +14872,12 @@
 # ::preferred 
 # ::tok The first time was twenty - two years ago , when some giddy goose fell from goodness knows where .
 # ::snt The first time was twenty - two years ago , when some giddy goose fell from goodness knows where .
-# ::caveman_string temporal-quantity year some giddy goose fall-01 goodness know-01 
+# ::caveman_string year some giddy goose fall-01 goodness know-01 
 # ::file lpp_1943_674.txt
 # ::date 2014-07-12T11:46:27.472
 # ::alignments 7-8|0.1.1+0.1.1.1 14-15|0.1.2 17-18|0.1.2.1.0 16-17|0.1.2.1.0.0 13-14|0.1.2.0 11-12|0.1.2.0.1 12-13|0.1.2.0.0
 # ::id lpp_1943.674
-# ::caveman_alignment 0-2|0.1.1+0.1.1.1 2-3|0.1.2.0.1 3-4|0.1.2.0.0 4-5|0.1.2.0 5-6|0.1.2 6-7|0.1.2.1.0.0 7-8|0.1.2.1.0 
+# ::caveman_alignment 0-1|0.1.1+0.1.1.1 1-2|0.1.2.0.1 2-3|0.1.2.0.0 3-4|0.1.2.0 4-5|0.1.2 5-6|0.1.2.1.0.0 6-7|0.1.2.1.0 
 (b / be-temporally-at-91
       :ARG1 (d / disturb-01
             :ord (o / ordinal-entity :value 1))
@@ -14930,12 +14930,12 @@
 # ::preferred 
 # ::tok The second time , eleven years ago , I was disturbed by an attack of rheumatism .
 # ::snt The second time , eleven years ago , I was disturbed by an attack of rheumatism .
-# ::caveman_string temporal-quantity year i disturb-01 attack rheumatism 
+# ::caveman_string year i disturb-01 attack rheumatism 
 # ::file lpp_1943_676.txt
 # ::date 2014-07-12T11:46:27.486
 # ::alignments 10-11|0 5-6|0.2.1+0.2.1.1 8-9|0.1 13-14|0.0 15-16|0.0.0
 # ::id lpp_1943.676
-# ::caveman_alignment 0-2|0.2.1+0.2.1.1 2-3|0.1 3-4|0 4-5|0.0 5-6|0.0.0 
+# ::caveman_alignment 0-1|0.2.1+0.2.1.1 1-2|0.1 2-3|0 3-4|0.0 4-5|0.0.0 
 (d / disturb-01
       :ARG0 (a3 / attack
             :mod (r / rheumatism))
@@ -16321,12 +16321,12 @@
 # ::preferred 
 # ::tok " I myself own a flower , " he continued his conversation with the businessman , " which I water every day .
 # ::snt " I myself own a flower , " he continued his conversation with the businessman , " which I water every day .
-# ::caveman_string own-01 flower he continue-02 converse-01 businessman water-01 temporal-quantity day 
+# ::caveman_string own-01 flower he continue-02 converse-01 businessman water-01 day 
 # ::file lpp_1943_747.txt
 # ::date 2014-07-12T11:46:27.818
 # ::alignments 9-10|0 14-15|0.2 3-4|0.1 5-6|0.1.0 19-20|0.1.0.0 21-22|0.1.0.0.0.0+0.1.0.0.0.0.1 8-9|0.0 11-12|0.3
 # ::id lpp_1943.747
-# ::caveman_alignment 0-1|0.1 1-2|0.1.0 2-3|0.0 3-4|0 4-5|0.3 5-6|0.2 6-7|0.1.0.0 7-9|0.1.0.0.0.0+0.1.0.0.0.0.1 
+# ::caveman_alignment 0-1|0.1 1-2|0.1.0 2-3|0.0 3-4|0 4-5|0.3 5-6|0.2 6-7|0.1.0.0 7-8|0.1.0.0.0.0+0.1.0.0.0.0.1 
 (c / continue-02
       :ARG0 (h / he)
       :ARG1 (o / own-01
@@ -16349,12 +16349,12 @@
 # ::preferred 
 # ::tok I own three volcanoes , which I clean out every week ( for I also clean out the one that is extinct ; one never knows ) .
 # ::snt I own three volcanoes , which I clean out every week ( for I also clean out the one that is extinct ; one never knows ) .
-# ::caveman_string i own-01 3 volcano clean-03 temporal-quantity week also clean-03 one extinct 1 know-01 
+# ::caveman_string i own-01 3 volcano clean-03 week also clean-03 one extinct 1 know-01 
 # ::file lpp_1943_748.txt
 # ::date 2014-07-12T11:46:27.827
 # ::alignments 1-2|0 3-4|0.1 7-8|0.1.1 15-16|0.1.1.1.0 25-26|0.1.1.1.0.2.0 18-19|0.1.1.1.0.2.0.1 14-15|0.1.1.1.0.1 21-22|0.1.1.1.0.0.0 23-24|0.1.1.0.0.0 10-11|0.1.1.0.0+0.1.1.0.0.1 2-3|0.1.0 0-1|0.0
 # ::id lpp_1943.748
-# ::caveman_alignment 0-1|0.0 1-2|0 2-3|0.1.0 3-4|0.1 4-5|0.1.1 5-7|0.1.1.0.0+0.1.1.0.0.1 7-8|0.1.1.1.0.1 8-9|0.1.1.1.0 9-10|0.1.1.1.0.2.0.1 10-11|0.1.1.1.0.0.0 11-12|0.1.1.0.0.0 12-13|0.1.1.1.0.2.0 
+# ::caveman_alignment 0-1|0.0 1-2|0 2-3|0.1.0 3-4|0.1 4-5|0.1.1 5-6|0.1.1.0.0+0.1.1.0.0.1 6-7|0.1.1.1.0.1 7-8|0.1.1.1.0 8-9|0.1.1.1.0.2.0.1 9-10|0.1.1.1.0.0.0 10-11|0.1.1.0.0.0 11-12|0.1.1.1.0.2.0 
 (o / own-01
       :ARG0 (i / i)
       :ARG1 (v / volcano :quant 3
@@ -17264,12 +17264,12 @@
 # ::preferred 
 # ::tok " Then - - the planet now makes a complete turn every minute , and I no longer have a single second for repose .
 # ::snt " Then - - the planet now makes a complete turn every minute , and I no longer have a single second for repose .
-# ::caveman_string then planet now complete turn-01 temporal-quantity minute and i - have-03 temporal-quantity second repose-01 
+# ::caveman_string then planet now complete turn-01 minute and i - have-03 second repose-01 
 # ::file lpp_1943_792.txt
 # ::date 2014-07-12T11:46:28.007
 # ::alignments 16-17|0.1.0 14-15|0 1-2|0.2 18-19|0.1 21-22|0.1.2+0.1.2.1 23-24|0.1.2.2 15-16|0.1.1 10-11|0.0 12-13|0.0.3.0+0.0.3.0.1 6-7|0.0.2 9-10|0.0.1 5-6|0.0.0
 # ::id lpp_1943.792
-# ::caveman_alignment 0-1|0.2 1-2|0.0.0 2-3|0.0.2 3-4|0.0.1 4-5|0.0 5-7|0.0.3.0+0.0.3.0.1 7-8|0 8-9|0.1.1 9-10|0.1.0 10-11|0.1 11-13|0.1.2+0.1.2.1 13-14|0.1.2.2 
+# ::caveman_alignment 0-1|0.2 1-2|0.0.0 2-3|0.0.2 3-4|0.0.1 4-5|0.0 5-6|0.0.3.0+0.0.3.0.1 6-7|0 7-8|0.1.1 8-9|0.1.0 9-10|0.1 10-11|0.1.2+0.1.2.1 11-12|0.1.2.2 
 (a / and
       :op1 (t / turn-01
             :ARG1 (p / planet)
@@ -17293,12 +17293,12 @@
 # ::preferred 
 # ::tok Once every minute I have to light my lamp and put it out ! "
 # ::snt Once every minute I have to light my lamp and put it out ! "
-# ::caveman_string temporal-quantity minute i light-01 lamp and put-09 
+# ::caveman_string minute i light-01 lamp and put-09 
 # ::file lpp_1943_793.txt
 # ::date 2014-07-12T11:46:28.014
 # ::alignments 3-4|0.0 9-10|0.1 10-11|0.1.1 6-7|0.1.0 8-9|0.1.0.0 2-3|0.2.0+0.2.0.1
 # ::id lpp_1943.793
-# ::caveman_alignment 0-2|0.2.0+0.2.0.1 2-3|0.0 3-4|0.1.0 4-5|0.1.0.0 5-6|0.1 6-7|0.1.1 
+# ::caveman_alignment 0-1|0.2.0+0.2.0.1 1-2|0.0 2-3|0.1.0 3-4|0.1.0.0 4-5|0.1 5-6|0.1.1 
 (o / obligate-01
       :ARG1 (i / i)
       :ARG2 (a / and
@@ -17337,12 +17337,12 @@
 # ::preferred 
 # ::tok A day lasts only one minute , here where you live ! "
 # ::snt A day lasts only one minute , here where you live ! "
-# ::caveman_string temporal-quantity day last-01 only 1 temporal-quantity minute you live-01 
+# ::caveman_string day last-01 only 1 minute you live-01 
 # ::file lpp_1943_795.txt
 # ::date 2014-07-12T11:46:28.021
 # ::alignments 2-3|0 10-11|0.3 9-10|0.3.0 3-4|0.2 4-5|0.1.0 5-6|0.1+0.1.1 1-2|0.0+0.0.1
 # ::id lpp_1943.795
-# ::caveman_alignment 0-2|0.0+0.0.1 2-3|0 3-4|0.2 4-5|0.1.0 5-7|0.1+0.1.1 7-8|0.3.0 8-9|0.3 
+# ::caveman_alignment 0-1|0.0+0.0.1 1-2|0 2-3|0.2 3-4|0.1.0 4-5|0.1+0.1.1 5-6|0.3.0 6-7|0.3 
 (l / last-01
       :ARG1 (t / temporal-quantity :quant 1
             :unit (d / day))
@@ -17380,12 +17380,12 @@
 # ::preferred 
 # ::tok " While we have been talking together a month has gone by . "
 # ::snt " While we have been talking together a month has gone by . "
-# ::caveman_string we talk-01 together temporal-quantity month 
+# ::caveman_string we talk-01 together month 
 # ::file lpp_1943_797.txt
 # ::date 2014-07-12T11:46:28.033
 # ::alignments 8-9|0.0+0.0.1 5-6|0.1 6-7|0.1.1 2-3|0.1.0
 # ::id lpp_1943.797
-# ::caveman_alignment 0-1|0.1.0 1-2|0.1 2-3|0.1.1 3-5|0.0+0.0.1 
+# ::caveman_alignment 0-1|0.1.0 1-2|0.1 2-3|0.1.1 3-4|0.0+0.0.1 
 (p / pass-03
       :ARG1 (t / temporal-quantity :quant 1
             :unit (m / month))
@@ -17400,12 +17400,12 @@
 # ::preferred 
 # ::tok " A month ? "
 # ::snt " A month ? "
-# ::caveman_string temporal-quantity month 
+# ::caveman_string month 
 # ::file lpp_1943_798.txt
 # ::date 2014-07-12T11:46:28.035
 # ::alignments 2-3|0+0.2
 # ::id lpp_1943.798
-# ::caveman_alignment 0-2|0+0.2 
+# ::caveman_alignment 0-1|0+0.2 
 (t / temporal-quantity :mode interrogative :quant 1
       :unit (m / month))
 
@@ -17416,12 +17416,12 @@
 # ::preferred 
 # ::tok " Yes , a month .
 # ::snt " Yes , a month .
-# ::caveman_string temporal-quantity month 
+# ::caveman_string month 
 # ::file lpp_1943_799.txt
 # ::date 2014-07-12T11:46:28.037
 # ::alignments 4-5|0+0.0
 # ::id lpp_1943.799
-# ::caveman_alignment 0-2|0+0.0 
+# ::caveman_alignment 0-1|0+0.0 
 (t / temporal-quantity
   :unit (m / month)
   :quant 1)
@@ -17433,12 +17433,12 @@
 # ::preferred 
 # ::tok Thirty minutes .
 # ::snt Thirty minutes .
-# ::caveman_string temporal-quantity minute 
+# ::caveman_string minute 
 # ::file lpp_1943_800.txt
 # ::date 2014-07-12T11:46:28.039
 # ::alignments 1-2|0+0.0
 # ::id lpp_1943.800
-# ::caveman_alignment 0-2|0+0.0 
+# ::caveman_alignment 0-1|0+0.0 
 (t / temporal-quantity
   :unit (m / minute)
   :quant 30)
@@ -17450,12 +17450,12 @@
 # ::preferred 
 # ::tok Thirty days .
 # ::snt Thirty days .
-# ::caveman_string temporal-quantity day 
+# ::caveman_string day 
 # ::file lpp_1943_801.txt
 # ::date 2014-07-12T11:46:28.041
 # ::alignments 1-2|0+0.0
 # ::id lpp_1943.801
-# ::caveman_alignment 0-2|0+0.0 
+# ::caveman_alignment 0-1|0+0.0 
 (t / temporal-quantity
   :unit (d / day)
   :quant 30)
@@ -17994,12 +17994,12 @@
 # ::preferred 
 # ::tok What the little prince did not dare confess was that he was sorry most of all to leave this planet , because it was blest every day with 1440 sunsets !
 # ::snt What the little prince did not dare confess was that he was sorry most of all to leave this planet , because it was blest every day with 1440 sunsets !
-# ::caveman_string little prince dare-01 confess-01 sorry-41 most leave-01 this planet cause-01 bless-01 temporal-quantity day 1440 sunset 
+# ::caveman_string little prince dare-01 confess-01 sorry-41 most leave-01 this planet cause-01 bless-01 day 1440 sunset 
 # ::file lpp_1943_824.txt
 # ::date 2014-07-12T11:46:28.196
 # ::alignments 6-7|0 7-8|0.2 21-22|0.2.0 13-14|0.2.0.2 12-13|0.2.0.1 17-18|0.2.0.1.0 24-25|0.2.0.0 26-27|0.2.0.0.2.0+0.2.0.0.2.0.1 29-30|0.2.0.0.1 28-29|0.2.0.0.1.0 19-20|0.2.0.0.0 18-19|0.2.0.0.0.0 3-4|0.1 2-3|0.1.0
 # ::id lpp_1943.824
-# ::caveman_alignment 0-1|0.1.0 1-2|0.1 2-3|0 3-4|0.2 4-5|0.2.0.1 5-6|0.2.0.2 6-7|0.2.0.1.0 7-8|0.2.0.0.0.0 8-9|0.2.0.0.0 9-10|0.2.0 10-11|0.2.0.0 11-13|0.2.0.0.2.0+0.2.0.0.2.0.1 13-14|0.2.0.0.1.0 14-15|0.2.0.0.1 
+# ::caveman_alignment 0-1|0.1.0 1-2|0.1 2-3|0 3-4|0.2 4-5|0.2.0.1 5-6|0.2.0.2 6-7|0.2.0.1.0 7-8|0.2.0.0.0.0 8-9|0.2.0.0.0 9-10|0.2.0 10-11|0.2.0.0 11-12|0.2.0.0.2.0+0.2.0.0.2.0.1 12-13|0.2.0.0.1.0 13-14|0.2.0.0.1 
 (d / dare-01 :polarity -
       :ARG0 (p / prince
             :mod (l / little))
@@ -20274,12 +20274,12 @@
 # ::preferred 
 # ::tok Only the man who was in charge of the single lamp at the North Pole , and his colleague who was responsible for the single lamp at the South Pole - - only these two would live free from toil and care : they would be busy twice a year .
 # ::snt Only the man who was in charge of the single lamp at the North Pole , and his colleague who was responsible for the single lamp at the South Pole - - only these two would live free from toil and care : they would be busy twice a year .
-# ::caveman_string only man charge-05 single lamp North Pole and colleague responsible-41 single lamp South Pole only 2 live-01 free-01 toil-01 and care-01 busy temporal-quantity year 
+# ::caveman_string only man charge-05 single lamp North Pole and colleague responsible-41 single lamp South Pole only 2 live-01 free-01 toil-01 and care-01 busy year 
 # ::file lpp_1943_930.txt
 # ::date 2014-07-12T11:46:28.716
 # ::alignments 13-15|0.0.0.0.0.1.0+0.0.0.0.0.1.0.0+0.0.0.0.0.1.0.0.0+0.0.0.0.0.1.0.0.1 28-30|0.0.1.0.0.1.0+0.0.1.0.0.1.0.0+0.0.1.0.0.1.0.0.0+0.0.1.0.0.1.0.0.1 36-37|0 46-47|0.2.0 34-35|0.2.0.0.0 49-50|0.2.0.0.1+0.2.0.0.1.1 37-38|0.1 16-17|0.1.0 41-42|0.1.0.1 39-40|0.1.0.0 40-41|0.0 0-1|0.0.2.2 18-19|0.0.1 21-22|0.0.1.0 10-11|0.0.1.0.0 9-10|0.0.1.0.0.0 2-3|0.0.0 32-33|0.0.0.1 6-7|0.0.0.0 25-26|0.0.0.0.0 24-25|0.0.0.0.0.0
 # ::id lpp_1943.930
-# ::caveman_alignment 0-1|0.0.2.2 1-2|0.0.0 2-3|0.0.0.0 3-4|0.0.1.0.0.0 4-5|0.0.1.0.0 5-7|0.0.0.0.0.1.0+0.0.0.0.0.1.0.0+0.0.0.0.0.1.0.0.0+0.0.0.0.0.1.0.0.1 7-8|0.1.0 8-9|0.0.1 9-10|0.0.1.0 10-11|0.0.0.0.0.0 11-12|0.0.0.0.0 12-14|0.0.1.0.0.1.0+0.0.1.0.0.1.0.0+0.0.1.0.0.1.0.0.0+0.0.1.0.0.1.0.0.1 14-15|0.0.0.1 15-16|0.2.0.0.0 16-17|0 17-18|0.1 18-19|0.1.0.0 19-20|0.0 20-21|0.1.0.1 21-22|0.2.0 22-24|0.2.0.0.1+0.2.0.0.1.1 
+# ::caveman_alignment 0-1|0.0.2.2 1-2|0.0.0 2-3|0.0.0.0 3-4|0.0.1.0.0.0 4-5|0.0.1.0.0 5-7|0.0.0.0.0.1.0+0.0.0.0.0.1.0.0+0.0.0.0.0.1.0.0.0+0.0.0.0.0.1.0.0.1 7-8|0.1.0 8-9|0.0.1 9-10|0.0.1.0 10-11|0.0.0.0.0.0 11-12|0.0.0.0.0 12-14|0.0.1.0.0.1.0+0.0.1.0.0.1.0.0+0.0.1.0.0.1.0.0.0+0.0.1.0.0.1.0.0.1 14-15|0.0.0.1 15-16|0.2.0.0.0 16-17|0 17-18|0.1 18-19|0.1.0.0 19-20|0.0 20-21|0.1.0.1 21-22|0.2.0 22-23|0.2.0.0.1+0.2.0.0.1.1 
 (l / live-01
       :ARG0 (a2 / and
             :op1 (m / man
@@ -20434,12 +20434,12 @@
 # ::preferred 
 # ::tok If the two billion inhabitants who people its surface were all to stand upright and somewhat crowded together , as they do for some big public assembly , they could easily be put into one public square twenty miles long and twenty miles wide .
 # ::snt If the two billion inhabitants who people its surface were all to stand upright and somewhat crowded together , as they do for some big public assembly , they could easily be put into one public square twenty miles long and twenty miles wide .
-# ::caveman_string inhabit-01 people-01 it surface all stand-01 upright and somewhat crowd-02 together do-02 some big public assemble-02 possible put-01 public square distance-quantity mile long and distance-quantity mile wide 
+# ::caveman_string inhabit-01 people-01 it surface all stand-01 upright and somewhat crowd-02 together do-02 some big public assemble-02 possible put-01 public square mile long and mile wide 
 # ::file lpp_1943_936.txt
 # ::date 2014-07-12T11:46:28.755
 # ::alignments 29-30|0 12-13|0.1 14-15|0.1.2 16-17|0.1.2.1 17-18|0.1.2.1.0 15-16|0.1.2.1.0.0 13-14|0.1.2.0 21-22|0.1.1.0 25-26|0.1.1.0.0.0 24-25|0.1.1.0.0.1 23-24|0.1.1.0.0.2 6-7|0.1.0.1 8-9|0.1.0.1.0 7-8|0.1.0.1.0.0 10-11|0.1.0.3 32-33|0.0 36-37|0.0.0 40-41|0.0.0.1 43-44|0.0.0.1.1 38-39|0.0.0.1.1.0+0.0.0.1.1.0.0 39-40|0.0.0.1.0 42-43|0.0.0.1.0.0+0.0.0.1.0.0.0 35-36|0.0.0.0 26-27|0.1.1.0.0 4-5|0.1.0+0.1.0.0
 # ::id lpp_1943.936
-# ::caveman_alignment 0-1|0.1.0+0.1.0.0 1-2|0.1.0.1 2-3|0.1.0.1.0.0 3-4|0.1.0.1.0 4-5|0.1.0.3 5-6|0.1 6-7|0.1.2.0 7-8|0.1.2 8-9|0.1.2.1.0.0 9-10|0.1.2.1 10-11|0.1.2.1.0 11-12|0.1.1.0 12-13|0.1.1.0.0.2 13-14|0.1.1.0.0.1 14-15|0.1.1.0.0.0 15-16|0.1.1.0.0 16-17|0 17-18|0.0 18-19|0.0.0.0 19-20|0.0.0 20-22|0.0.0.1.1.0+0.0.0.1.1.0.0 22-23|0.0.0.1.0 23-24|0.0.0.1 24-26|0.0.0.1.0.0+0.0.0.1.0.0.0 26-27|0.0.0.1.1 
+# ::caveman_alignment 0-1|0.1.0+0.1.0.0 1-2|0.1.0.1 2-3|0.1.0.1.0.0 3-4|0.1.0.1.0 4-5|0.1.0.3 5-6|0.1 6-7|0.1.2.0 7-8|0.1.2 8-9|0.1.2.1.0.0 9-10|0.1.2.1 10-11|0.1.2.1.0 11-12|0.1.1.0 12-13|0.1.1.0.0.2 13-14|0.1.1.0.0.1 14-15|0.1.1.0.0.0 15-16|0.1.1.0.0 16-17|0 17-18|0.0 18-19|0.0.0.0 19-20|0.0.0 20-21|0.0.0.1.1.0+0.0.0.1.1.0.0 21-22|0.0.0.1.0 22-23|0.0.0.1 23-24|0.0.0.1.0.0+0.0.0.1.0.0.0 24-25|0.0.0.1.1 
 (p / possible
       :domain (p2 / put-01
             :ARG1 p3
@@ -21770,12 +21770,12 @@
 # ::preferred 
 # ::tok I saw them , several years ago .
 # ::snt I saw them , several years ago .
-# ::caveman_string i see-01 several temporal-quantity year 
+# ::caveman_string i see-01 several year 
 # ::file lpp_1943_1000.txt
 # ::date 2014-07-12T11:46:29.000
 # ::alignments 1-2|0 4-5|0.2.1 5-6|0.2.1.0+0.2.1.0.1 0-1|0.0
 # ::id lpp_1943.1000
-# ::caveman_alignment 0-1|0.0 1-2|0 2-3|0.2.1 3-5|0.2.1.0+0.2.1.0.1 
+# ::caveman_alignment 0-1|0.0 1-2|0 2-3|0.2.1 3-4|0.2.1.0+0.2.1.0.1 
 (s / see-01
       :ARG0 (i / i)
       :ARG1 (t / they)
@@ -24404,12 +24404,12 @@
 # ::preferred 
 # ::tok But you will sit a little closer to me , every day ... "
 # ::snt But you will sit a little closer to me , every day ... "
-# ::caveman_string contrast-01 you sit-02 little close temporal-quantity day 
+# ::caveman_string contrast-01 you sit-02 little close day 
 # ::file lpp_1943_1128.txt
 # ::date 2014-07-12T11:46:29.516
 # ::alignments 0-1|0 3-4|0.0 11-12|0.0.1.1.0+0.0.1.1.0.1 6-7|0.0.1.2 5-6|0.0.1.2.0.0 1-2|0.0.0
 # ::id lpp_1943.1128
-# ::caveman_alignment 0-1|0 1-2|0.0.0 2-3|0.0 3-4|0.0.1.2.0.0 4-5|0.0.1.2 5-7|0.0.1.1.0+0.0.1.1.0.1 
+# ::caveman_alignment 0-1|0 1-2|0.0.0 2-3|0.0 3-4|0.0.1.2.0.0 4-5|0.0.1.2 5-6|0.0.1.1.0+0.0.1.1.0.1 
 (c2 / contrast-01
       :ARG2 (s / sit-02
             :ARG1 (y / you)
@@ -26233,12 +26233,12 @@
 # ::preferred 
 # ::tok You need only swallow one pill a week , and you would feel no need of anything to drink .
 # ::snt You need only swallow one pill a week , and you would feel no need of anything to drink .
-# ::caveman_string you need-01 only swallow-01 1 pill temporal-quantity week feel-01 - need-01 anything drink-01 
+# ::caveman_string you need-01 only swallow-01 1 pill week feel-01 - need-01 anything drink-01 
 # ::file lpp_1943_1210.txt
 # ::date 2014-07-12T11:46:29.897
 # ::alignments 13-14|0.1.0 1-2|0.0 2-3|0.0.2 3-4|0.0.1 5-6|0.0.1.0.0 4-5|0.0.1.0.0.0 7-8|0.0.1.0.1+0.0.1.0.1.1 0-1|0.0.0 12-13|0.1 14-15|0.1.1 18-19|0.1.1.0 16-17|0.1.1.0.0
 # ::id lpp_1943.1210
-# ::caveman_alignment 0-1|0.0.0 1-2|0.0 2-3|0.0.2 3-4|0.0.1 4-5|0.0.1.0.0.0 5-6|0.0.1.0.0 6-8|0.0.1.0.1+0.0.1.0.1.1 8-9|0.1 9-10|0.1.0 10-11|0.1.1 11-12|0.1.1.0.0 12-13|0.1.1.0 
+# ::caveman_alignment 0-1|0.0.0 1-2|0.0 2-3|0.0.2 3-4|0.0.1 4-5|0.0.1.0.0.0 5-6|0.0.1.0.0 6-7|0.0.1.0.1+0.0.1.0.1.1 7-8|0.1 8-9|0.1.0 9-10|0.1.1 10-11|0.1.1.0.0 11-12|0.1.1.0 
 (c / cause-01
       :ARG0 (n / need-01
             :ARG0 (y / you)
@@ -26328,12 +26328,12 @@
 # ::preferred 
 # ::tok With these pills , you save fifty - three minutes in every week . "
 # ::snt With these pills , you save fifty - three minutes in every week . "
-# ::caveman_string pill you save-03 temporal-quantity minute temporal-quantity week 
+# ::caveman_string pill you save-03 minute week 
 # ::file lpp_1943_1214.txt
 # ::date 2014-07-12T11:46:29.913
 # ::alignments 5-6|0 2-3|0.2 9-10|0.1.0+0.1.0.1 12-13|0.1.1+0.1.1.1 4-5|0.0
 # ::id lpp_1943.1214
-# ::caveman_alignment 0-1|0.2 1-2|0.0 2-3|0 3-5|0.1.0+0.1.0.1 5-7|0.1.1+0.1.1.1 
+# ::caveman_alignment 0-1|0.2 1-2|0.0 2-3|0 3-4|0.1.0+0.1.0.1 4-5|0.1.1+0.1.1.1 
 (s / save-03
       :ARG0 (y / you)
       :ARG1 (r / rate-entity-91
@@ -26351,12 +26351,12 @@
 # ::preferred 
 # ::tok " And what do I do with those fifty - three minutes ? "
 # ::snt " And what do I do with those fifty - three minutes ? "
-# ::caveman_string and do-02 i temporal-quantity minute 
+# ::caveman_string and do-02 i minute 
 # ::file lpp_1943_1215.txt
 # ::date 2014-07-12T11:46:29.917
 # ::alignments 1-2|0 3-4|0.0 11-12|0.0.2+0.0.2.1 4-5|0.0.0
 # ::id lpp_1943.1215
-# ::caveman_alignment 0-1|0 1-2|0.0 2-3|0.0.0 3-5|0.0.2+0.0.2.1 
+# ::caveman_alignment 0-1|0 1-2|0.0 2-3|0.0.0 3-4|0.0.2+0.0.2.1 
 (a / and
       :op1 (d / do-02
             :ARG0 (i / i)
@@ -26391,12 +26391,12 @@
 # ::preferred 
 # ::tok " As for me , " said the little prince to himself , " if I had fifty - three minutes to spend as I liked , I should walk at my leisure toward a spring of fresh water . "
 # ::snt " As for me , " said the little prince to himself , " if I had fifty - three minutes to spend as I liked , I should walk at my leisure toward a spring of fresh water . "
-# ::caveman_string say-01 little prince i have-03 temporal-quantity minute spend-02 like-02 walk-01 leisure toward spring fresh water 
+# ::caveman_string say-01 little prince i have-03 minute spend-02 like-02 walk-01 leisure toward spring fresh water 
 # ::file lpp_1943_1217.txt
 # ::date 2014-07-12T11:46:29.934
 # ::alignments 6-7|0 29-30|0.1 16-17|0.1.3 20-21|0.1.3.0+0.1.3.0.1 22-23|0.1.3.0.2 25-26|0.1.3.0.2.0 32-33|0.1.2 33-34|0.1.1 35-36|0.1.1.0 38-39|0.1.1.0.0 37-38|0.1.1.0.0.0 15-16|0.1.0 9-10|0.0 8-9|0.0.0
 # ::id lpp_1943.1217
-# ::caveman_alignment 0-1|0 1-2|0.0.0 2-3|0.0 3-4|0.1.0 4-5|0.1.3 5-7|0.1.3.0+0.1.3.0.1 7-8|0.1.3.0.2 8-9|0.1.3.0.2.0 9-10|0.1 10-11|0.1.2 11-12|0.1.1 12-13|0.1.1.0 13-14|0.1.1.0.0.0 14-15|0.1.1.0.0 
+# ::caveman_alignment 0-1|0 1-2|0.0.0 2-3|0.0 3-4|0.1.0 4-5|0.1.3 5-6|0.1.3.0+0.1.3.0.1 6-7|0.1.3.0.2 7-8|0.1.3.0.2.0 8-9|0.1 9-10|0.1.2 10-11|0.1.1 11-12|0.1.1.0 12-13|0.1.1.0.0.0 13-14|0.1.1.0.0 
 (s / say-01
       :ARG0 (p / prince
             :mod (l / little))
@@ -26440,12 +26440,12 @@
 # ::preferred 
 # ::tok It was now the eighth day since I had had my accident in the desert , and I had listened to the story of the merchant as I was drinking the last drop of my water supply .
 # ::snt It was now the eighth day since I had had my accident in the desert , and I had listened to the story of the merchant as I was drinking the last drop of my water supply .
-# ::caveman_string temporal-quantity day since i accident desert and listen-01 story merchandise-01 drink-01 last drop water supply-01 
+# ::caveman_string day since i accident desert and listen-01 story merchandise-01 drink-01 last drop water supply-01 
 # ::file lpp_1943_1219.txt
 # ::date 2014-07-12T11:46:29.946
 # ::alignments 16-17|0 19-20|0.1 29-30|0.1.1 32-33|0.1.1.0 31-32|0.1.1.0.1 35-36|0.1.1.0.0 36-37|0.1.1.0.0.0 22-23|0.1.0 5-6|0.0.0+0.0.0.1 6-7|0.0.1 11-12|0.0.1.0 14-15|0.0.1.0.1 7-8|0.0.1.0.0 25-26|0.1.0.0+0.1.0.0.0
 # ::id lpp_1943.1219
-# ::caveman_alignment 0-2|0.0.0+0.0.0.1 2-3|0.0.1 3-4|0.0.1.0.0 4-5|0.0.1.0 5-6|0.0.1.0.1 6-7|0 7-8|0.1 8-9|0.1.0 9-10|0.1.0.0+0.1.0.0.0 10-11|0.1.1 11-12|0.1.1.0.1 12-13|0.1.1.0 13-14|0.1.1.0.0 14-15|0.1.1.0.0.0 
+# ::caveman_alignment 0-1|0.0.0+0.0.0.1 1-2|0.0.1 2-3|0.0.1.0.0 3-4|0.0.1.0 4-5|0.0.1.0.1 5-6|0 6-7|0.1 7-8|0.1.0 8-9|0.1.0.0+0.1.0.0.0 9-10|0.1.1 10-11|0.1.1.0.1 11-12|0.1.1.0 12-13|0.1.1.0.0 13-14|0.1.1.0.0.0 
 (a / and
       :op1 (p / pass-03
             :ARG1 (t2 / temporal-quantity :quant 8
@@ -26857,12 +26857,12 @@
 # ::preferred 
 # ::tok When we had trudged along for several hours , in silence , the darkness fell , and the stars began to come out .
 # ::snt When we had trudged along for several hours , in silence , the darkness fell , and the stars began to come out .
-# ::caveman_string we trudge-01 several temporal-quantity hour silent darkness fall-04 and star begin-01 come-09 
+# ::caveman_string we trudge-01 several hour silent darkness fall-04 and star begin-01 come-09 
 # ::file lpp_1943_1237.txt
 # ::date 2014-07-12T11:46:30.031
 # ::alignments 16-17|0 3-4|0.2 6-7|0.2.1 7-8|0.2.1.0+0.2.1.0.1 1-2|0.2.0 19-20|0.1 21-22|0.1.1 18-19|0.1.0 14-15|0.0 13-14|0.0.0 10-11|0.2.2
 # ::id lpp_1943.1237
-# ::caveman_alignment 0-1|0.2.0 1-2|0.2 2-3|0.2.1 3-5|0.2.1.0+0.2.1.0.1 5-6|0.2.2 6-7|0.0.0 7-8|0.0 8-9|0 9-10|0.1.0 10-11|0.1 11-12|0.1.1 
+# ::caveman_alignment 0-1|0.2.0 1-2|0.2 2-3|0.2.1 3-4|0.2.1.0+0.2.1.0.1 4-5|0.2.2 5-6|0.0.0 6-7|0.0 7-8|0 8-9|0.1.0 9-10|0.1 10-11|0.1.1 
 (a / and
       :op1 (f / fall-04
             :ARG1 (d / darkness))
@@ -29205,12 +29205,12 @@
 # ::preferred 
 # ::tok One question , however , occurred to me : " Then it was not by chance that on the morning when I first met you - - a week ago - - you were strolling along like that , all alone , a thousand miles from any inhabited region ?
 # ::snt One question , however , occurred to me : " Then it was not by chance that on the morning when I first met you - - a week ago - - you were strolling along like that , all alone , a thousand miles from any inhabited region ?
-# ::caveman_string 1 question-01 occur-01 chance that morning i meet-03 you temporal-quantity week stroll-01 along all alone distance-quantity mile any inhabit-01 region 
+# ::caveman_string 1 question-01 occur-01 chance that morning i meet-03 you week stroll-01 along all alone mile any inhabit-01 region 
 # ::file lpp_1943_1344.txt
 # ::date 2014-07-12T11:46:30.528
 # ::alignments 5-6|0.0 21-22|0.0.1 1-2|0.0.0 34-35|0.0.0.1 15-16|0.0.0.1.4.1 23-24|0.0.0.1.3 19-20|0.0.0.1.3.3 0-1|0.0.0.1.3.2.1.0 28-29|0.0.0.1.3.2.1+0.0.0.1.3.2.1.1 24-25|0.0.0.1.3.0 48-49|0.0.0.1.2.0 46-47|0.0.0.1.2.0.1 47-48|0.0.0.1.2.0.0 44-45|0.0.0.1.2.1+0.0.0.1.2.1.1 35-36|0.0.0.1.1 40-41|0.0.0.1.0 16-17|0.0.0.1.0.1.0 39-40|0.0.0.1.0.0
 # ::id lpp_1943.1344
-# ::caveman_alignment 0-1|0.0.0.1.3.2.1.0 1-2|0.0.0 2-3|0.0 3-4|0.0.0.1.4.1 4-5|0.0.0.1.0.1.0 5-6|0.0.0.1.3.3 6-7|0.0.1 7-8|0.0.0.1.3 8-9|0.0.0.1.3.0 9-11|0.0.0.1.3.2.1+0.0.0.1.3.2.1.1 11-12|0.0.0.1 12-13|0.0.0.1.1 13-14|0.0.0.1.0.0 14-15|0.0.0.1.0 15-17|0.0.0.1.2.1+0.0.0.1.2.1.1 17-18|0.0.0.1.2.0.1 18-19|0.0.0.1.2.0.0 19-20|0.0.0.1.2.0 
+# ::caveman_alignment 0-1|0.0.0.1.3.2.1.0 1-2|0.0.0 2-3|0.0 3-4|0.0.0.1.4.1 4-5|0.0.0.1.0.1.0 5-6|0.0.0.1.3.3 6-7|0.0.1 7-8|0.0.0.1.3 8-9|0.0.0.1.3.0 9-10|0.0.0.1.3.2.1+0.0.0.1.3.2.1.1 10-11|0.0.0.1 11-12|0.0.0.1.1 12-13|0.0.0.1.0.0 13-14|0.0.0.1.0 14-15|0.0.0.1.2.1+0.0.0.1.2.1.1 15-16|0.0.0.1.2.0.1 16-17|0.0.0.1.2.0.0 17-18|0.0.0.1.2.0 
 (c / contrast-01
       :ARG2 (o / occur-01
             :ARG1 (q / question-01 :quant 1
@@ -29821,12 +29821,12 @@
 # ::preferred 
 # ::tok I was only twenty metres from the wall , and I still saw nothing .
 # ::snt I was only twenty metres from the wall , and I still saw nothing .
-# ::caveman_string i only distance-quantity metre wall and still see-01 nothing 
+# ::caveman_string i only metre wall and still see-01 nothing 
 # ::file lpp_1943_1373.txt
 # ::date 2014-07-12T11:46:30.633
 # ::alignments 9-10|0 12-13|0.1 11-12|0.1.1 13-14|0.1.0 0-1|0.0.0 7-8|0.0.1.0 4-5|0.0.1.1+0.0.1.1.1 2-3|0.0.1.1.2
 # ::id lpp_1943.1373
-# ::caveman_alignment 0-1|0.0.0 1-2|0.0.1.1.2 2-4|0.0.1.1+0.0.1.1.1 4-5|0.0.1.0 5-6|0 6-7|0.1.1 7-8|0.1 8-9|0.1.0 
+# ::caveman_alignment 0-1|0.0.0 1-2|0.0.1.1.2 2-3|0.0.1.1+0.0.1.1.1 3-4|0.0.1.0 4-5|0 5-6|0.1.1 6-7|0.1 7-8|0.1.0 
 (a / and
       :op1 (b / be-located-at-91
             :ARG1 (i / i)
@@ -29989,12 +29989,12 @@
 # ::preferred 
 # ::tok There before me , facing the little prince , was one of those yellow snakes that take just thirty seconds to bring your life to an end .
 # ::snt There before me , facing the little prince , was one of those yellow snakes that take just thirty seconds to bring your life to an end .
-# ::caveman_string before face-01 little prince yellow snake take-10 just temporal-quantity second life end-01 
+# ::caveman_string before face-01 little prince yellow snake take-10 just second life end-01 
 # ::file lpp_1943_1380.txt
 # ::date 2014-07-12T11:46:30.679
 # ::alignments 14-15|0 4-5|0.3 7-8|0.3.0 6-7|0.3.0.0 1-2|0.2 16-17|0.1 19-20|0.1.1+0.1.1.1 17-18|0.1.1.2 26-27|0.1.0 23-24|0.1.0.0 13-14|0.0
 # ::id lpp_1943.1380
-# ::caveman_alignment 0-1|0.2 1-2|0.3 2-3|0.3.0.0 3-4|0.3.0 4-5|0.0 5-6|0 6-7|0.1 7-8|0.1.1.2 8-10|0.1.1+0.1.1.1 10-11|0.1.0.0 11-12|0.1.0 
+# ::caveman_alignment 0-1|0.2 1-2|0.3 2-3|0.3.0.0 3-4|0.3.0 4-5|0.0 5-6|0 6-7|0.1 7-8|0.1.1.2 8-9|0.1.1+0.1.1.1 9-10|0.1.0.0 10-11|0.1.0 
 (s3 / snake
       :mod (y / yellow)
       :ARG2-of (t / take-10
@@ -30823,12 +30823,12 @@
 # ::preferred 
 # ::tok But he said to me : " Tonight , it will be a year ... my star , then , can be found right above the place where I came to the Earth , a year ago ... "
 # ::snt But he said to me : " Tonight , it will be a year ... my star , then , can be found right above the place where I came to the Earth , a year ago ... "
-# ::caveman_string contrast-01 he say-01 tonight year star then possible find-01 right above place i come-01 earth temporal-quantity year 
+# ::caveman_string contrast-01 he say-01 tonight year star then possible find-01 right above place i come-01 earth year 
 # ::file lpp_1943_1417.txt
 # ::date 2014-07-12T11:46:30.856
 # ::alignments 0-1|0 2-3|0.0 28-29|0.0.2 20-21|0.0.1 18-19|0.0.1.3 13-14|0.0.1.2 7-8|0.0.1.1 22-23|0.0.1.0 24-25|0.0.1.0.1 23-24|0.0.1.0.1.1 26-27|0.0.1.0.1.0 29-30|0.0.1.0.1.0.0 35-36|0.0.1.0.1.0.0.1.1+0.0.1.0.1.0.0.1.1.0 32-33|0.0.1.0.1.0.0.0 16-17|0.0.1.0.0 1-2|0.0.0
 # ::id lpp_1943.1417
-# ::caveman_alignment 0-1|0 1-2|0.0.0 2-3|0.0 3-4|0.0.1.1 4-5|0.0.1.2 5-6|0.0.1.0.0 6-7|0.0.1.3 7-8|0.0.1 8-9|0.0.1.0 9-10|0.0.1.0.1.1 10-11|0.0.1.0.1 11-12|0.0.1.0.1.0 12-13|0.0.2 13-14|0.0.1.0.1.0.0 14-15|0.0.1.0.1.0.0.0 15-17|0.0.1.0.1.0.0.1.1+0.0.1.0.1.0.0.1.1.0 
+# ::caveman_alignment 0-1|0 1-2|0.0.0 2-3|0.0 3-4|0.0.1.1 4-5|0.0.1.2 5-6|0.0.1.0.0 6-7|0.0.1.3 7-8|0.0.1 8-9|0.0.1.0 9-10|0.0.1.0.1.1 10-11|0.0.1.0.1 11-12|0.0.1.0.1.0 12-13|0.0.2 13-14|0.0.1.0.1.0.0 14-15|0.0.1.0.1.0.0.0 15-16|0.0.1.0.1.0.0.1.1+0.0.1.0.1.0.0.1.1.0 
 (c / contrast-01
   :ARG2 (s / say-01
           :ARG0 (h / he)
@@ -33013,12 +33013,12 @@
 # ::preferred 
 # ::tok And now six years have already gone by ...
 # ::snt And now six years have already gone by ...
-# ::caveman_string and now 6 temporal-quantity year already go-15 
+# ::caveman_string and now 6 year already go-15 
 # ::file lpp_1943_1527.txt
 # ::date 2014-07-12T11:46:31.260
 # ::alignments 0-1|0 1-2|0.1 6-7|0.0 5-6|0.0.1 2-3|0.0.0.0 3-4|0.0.0+0.0.0.1
 # ::id lpp_1943.1527
-# ::caveman_alignment 0-1|0 1-2|0.1 2-3|0.0.0.0 3-5|0.0.0+0.0.0.1 5-6|0.0.1 6-7|0.0 
+# ::caveman_alignment 0-1|0 1-2|0.1 2-3|0.0.0.0 3-4|0.0.0+0.0.0.1 4-5|0.0.1 5-6|0.0 
 (a / and
       :op2 (g / go-15
             :ARG1 (t / temporal-quantity :quant 6
