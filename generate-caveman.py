@@ -64,7 +64,7 @@ if __name__ == '__main__':
         if item.strip() != '':
             c = AMRMetadata(item)
             c.parse_graph()
-            cs, cs_alignment = get_caveman_string(c.graph, c.attributes['tok'], c.attributes['alignments'])
+            cs, cs_alignment = get_caveman_string(c.graph, c.attributes['tok'], c.attributes.get('alignments', ''))
             c.add_attribute('caveman_string', cs)
             c.add_attribute('caveman_alignment', cs_alignment)
             print str(c)
