@@ -1,3 +1,10 @@
+HOW TOs
+=======
+
+- install fast_align and stanford chinese segmenter (run.sh assumes fast_align and segment.sh is in $PATH)
+
+- sh run.sh
+
 ISSUES DISCUSSED
 ================
 
