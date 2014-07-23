@@ -42,11 +42,14 @@ class AMRMetadata():
     def add_attribute(self, k, val):
         self.attributes[k] = val
 
+    def remove_attribute(self, k):
+        self.attributes.pop(k, None)
+
     def __str__(self):
         s = ''
         for k, v in self.attributes.items():
             s += '# ::' + k + ' ' + str(v) + '\n'
-        s += self.graph_string + '\n\n'
+        s += self.graph_string.strip() + '\n\n'
         return s
 
 
