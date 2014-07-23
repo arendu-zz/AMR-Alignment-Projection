@@ -1,8 +1,9 @@
 HOW TOs
 =======
 
-- install fast_align and stanford chinese segmenter (run.sh assumes fast_align and segment.sh is in $PATH)
-
+- install fast_align https://github.com/clab/fast_align
+- install stanford chinese segmenter http://nlp.stanford.edu/software/segmenter.shtml
+- (run.sh assumes fast_align and segment.sh is in $PATH)
 - sh run.sh
 
 ISSUES DISCUSSED
