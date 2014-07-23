@@ -1,16 +1,19 @@
 #!/bin/bash
-python generate-caveman.py -f data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned > data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned.caveman
+INPUT_ALIGNED="data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned"
+OUTPUT_ZH_ALIGNED="data/Little_Prince/amr-bank-struct-v1.3.txt.zh-aligned"
+TEMP_FOLDER="data/Little_Prince/"
+python generate-caveman.py -f $INPUT_ALIGNED > $TEMP_FOLDER"aligned.caveman"
 
-python extract-attributes.py -f data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned -a zh > data/Little_Prince/zh.unseg
+python extract-attributes.py -f $INPUT_ALIGNED  -a zh > $TEMP_FOLDER"zh.unseg"
 
-python extract-attributes.py -f data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned.caveman -a caveman_string > data/Little_Prince/caveman.segmented
+python extract-attributes.py -f $TEMP_FOLDER"aligned.caveman" -a caveman_string > $TEMP_FOLDER"caveman.segmented"
 
-segment.sh ctb data/Little_Prince/zh.unseg UTF-8 0 > data/Little_Prince/zh.segmented
+segment.sh ctb $TEMP_FOLDER"zh.unseg" UTF-8 0 > $TEMP_FOLDER"zh.segmented"
 
-rm  data/Little_Prince/zh.unseg
+rm  $TEMP_FOLDER"zh.unseg"
 
-python join.py -z data/Little_Prince/zh.segmented  -c data/Little_Prince/caveman.segmented  > data/Little_Prince/zh-caveman
+python join.py -z  $TEMP_FOLDER"zh.segmented"  -c  $TEMP_FOLDER"caveman.segmented"  >  $TEMP_FOLDER"zh-caveman"
 
-fast_align ctb -i data/Little_Prince/zh-caveman UTF-8 0 > data/Little_Prince/zh-caveman.alignments
+fast_align ctb -i $TEMP_FOLDER"zh-caveman" UTF-8 0 > $TEMP_FOLDER"zh-caveman.alignments"
 
-python source-to-amr-aligner.py -a data/Little_Prince/zh-caveman.alignments -f data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned.caveman -c data/Little_Prince/zh-caveman > data/Little_Prince/amr-bank-struct-v1.3.txt.zh-aligned
+python source-to-amr-aligner.py -a $TEMP_FOLDER"zh-caveman.alignments" -f $TEMP_FOLDER"aligned.caveman" -c $TEMP_FOLDER"zh-caveman" > $OUTPUT_ZH_ALIGNED
