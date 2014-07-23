@@ -2,7 +2,6 @@ __author__ = 'arenduchintala'
 
 from optparse import OptionParser
 from AMRMetadata import AMRMetadata
-from collections import defaultdict
 from pprint import pprint
 import pdb
 
@@ -22,8 +21,8 @@ if __name__ == '__main__':
     caveman = []  # target
     for src_tar in open(options.parallel_corp, 'r').readlines():
         src, tar = src_tar.split(' ||| ')
-        source.append(src)
-        caveman.append(tar)
+        source.append(src.strip())
+        caveman.append(tar.strip())
 
     metadata = []
     caveman_to_amr_alignments = []
@@ -39,16 +38,16 @@ if __name__ == '__main__':
         c2src = dict((int(g.split('-')[1]), str(int(g.split('-')[0])) + '-' + str(int(g.split('-')[0]) + 1)) for g in
                      [x for x in s2c.split()])
         source2amr = {}
-        print metadata[idx].attributes['caveman_string'], metadata[idx].attributes['zh']
-        print'source-to-caveman alignment (caveman : source-range)'
-        pprint(c2src)
-        print 'caveman-to-amr alignment'
+        print caveman[idx], source[idx]
+        # print'source-to-caveman alignment (caveman : source-range)'
+        # pprint(c2src)
+        # print 'caveman-to-amr alignment'
         for s in c2a.split():
             r = s.split('|')[0]
             caveman_indexes = range(int(r.split('-')[0]), int(r.split('-')[1]))  # all indexes in range
             # this range will mostly just span 1
             amr_paths = s.split('|')[1]  # we don't touch this - this part looks like 0.0.1+0.0.0.1 etc
-            print s, ',', r, ',', amr_paths, ',', caveman_indexes
+            # print s, ',', r, ',', amr_paths, ',', caveman_indexes
             for c in caveman_indexes:
                 if c in c2src:
                     if c2src[c] in source2amr:
@@ -56,9 +55,9 @@ if __name__ == '__main__':
                     else:
                         source2amr[c2src[c]] = amr_paths
                 else:
-                    print 'hello'
                     print c, 'is not in ', c2src
+        print 'source-to-amr alignment'
         pprint(source2amr)
-        print 'ok'
+        pdb.set_trace()
 
 

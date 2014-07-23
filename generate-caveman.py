@@ -4,25 +4,24 @@ __author__ = 'arenduchintala'
 from optparse import OptionParser
 from AMRMetadata import AMRMetadata
 from collections import defaultdict
-from AMRLists import NE_ONTOLOGY
+from AMRLists import NE_ONTOLOGY, QUANT_ONTOLOGY
 import pdb
 
 global verbose
 verbose = False
 
 
-def stringyfied_amr(g, s, a):
+def get_caveman_string(g, s, a):
     """
     places to the concepts from the graph 'g' in the order of the actual string 's' using the
     alingment 'a'
     :param g: amr graph
-    :param s:
-    :param a:
+    :param s: tok
+    :param a: alignment
     :return:
     """
     alignments = dict((tuple(x.split('|')[0].split('-')), x.split('|')[1].split('+')) for x in a.split())
     # print alignments
-
     span_concepts = defaultdict(list)
     caveman_alignments = {}
     if len(alignments) == 0:
@@ -38,7 +37,8 @@ def stringyfied_amr(g, s, a):
                 if verbose:
                     print 'getting concept at', seq, 'for span', span
                 concept = g.get_concept(seq.split('.'))
-                if concept not in NE_ONTOLOGY:  # filters out NE concepts from appearing in the caveman string
+                if concept not in NE_ONTOLOGY and concept not in QUANT_ONTOLOGY:  # filters out NE concepts from appearing in the
+                    # caveman string
                     span_concepts[int(span[0]), int(span[1])].append(concept)
                 elif concept in s:  # accepts NE concepts if the concept is present in the english string directly
                     span_concepts[int(span[0]), int(span[1])].append(concept)
@@ -64,10 +64,7 @@ if __name__ == '__main__':
         if item.strip() != '':
             c = AMRMetadata(item)
             c.parse_graph()
-            cs, cs_alignment = stringyfied_amr(c.graph, c.attributes['tok'], c.attributes['alignments'])
+            cs, cs_alignment = get_caveman_string(c.graph, c.attributes['tok'], c.attributes['alignments'])
             c.add_attribute('caveman_string', cs)
             c.add_attribute('caveman_alignment', cs_alignment)
             print str(c)
-
-
-
