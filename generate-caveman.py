@@ -53,6 +53,12 @@ def get_caveman_string(g, s, a):
         caveman_string += ' '.join(span_concepts[k]) + ' '
         caveman_alignments_string += str(i) + '-' + str(j) + '|' + caveman_alignments[k] + ' '
         i = j
+    if caveman_string.strip() == '':
+        # TODO this is a hack! must figure out how to check concept occuring in
+        # TODO the sentence (for example using stemming)
+        concept = g.get_concept([0])
+        span_concepts[0, len(s)].append(concept)
+        caveman_alignments[0, len(s)] = '0'
     return caveman_string, caveman_alignments_string
 
 
