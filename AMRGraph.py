@@ -145,6 +145,7 @@ class AMRGraph():
         eg. 0,1,1,3 is a path to take root r-> child 1 c1-> child 1 c2-> child 3 c3
         then return c3
         """
+        s = [x for x in sequence]
         sequence.pop(0)
         node_label = self.roots[0]
         while len(sequence) > 0:
@@ -206,6 +207,11 @@ class AMRGraph():
 
 
 if __name__ == '__main__':
+    s = '(c / city)'
+    b = AMRGraph()
+    b.parse_string(s)
+    assert b.get_concept([0]) == 'city'
+
     s = '(a  /  and  :op2  (r  /  repeat-01  :ARG0  (h  /  he)  :ARG1  (d  /  draw-01  :mode  imperative  :ARG0  (y2  /  you)  :ARG1  (s3  /  sheep)  :ARG2  (i  /  i)  :condition  (p  /  please-01  :ARG1  (y  /  you)))  :purpose  (a2  /  answer-01  :ARG0  h)  :manner  (s  /  slow  :degree  (v  /  very))  :conj-as-if  (s2  /  speak-01  :ARG0  h  :ARG1  (m  /  matter  :consist-of  (c  /  consequence  :degree  (g  /  great))))))  '
     b = AMRGraph()
     b.parse_string(s)
