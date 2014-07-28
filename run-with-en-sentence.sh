@@ -1,12 +1,19 @@
-#!/bin/sh
-python extract-attributes.py -f data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned -a zh > data/Little_Prince/zh.unseg
+#!/bin/bash
+INPUT_ALIGNED="data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned"
+OUTPUT_ZH_ALIGNED="data/Little_Prince/amr-bank-struct-v1.3.txt.zh-aligned"
+TEMP_FOLDER="data/Little_Prince/"
 
-python extract-attributes.py -f data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned -a tok > data/Little_Prince/en.segmented
+python extract-attributes.py -f $INPUT_ALIGNED  -a zh > $TEMP_FOLDER"zh.unseg"
 
-segment.sh ctb data/Little_Prince/zh.unseg UTF-8 0 > data/Little_Prince/zh.segmented
+python extract-attributes.py -f $INPUT_ALIGNED  -a tok > $TEMP_FOLDER"tok.segmented"
 
-rm  data/Little_Prince/zh.unseg
+segment.sh ctb $TEMP_FOLDER"zh.unseg" UTF-8 0 > $TEMP_FOLDER"zh.segmented"
 
-python join.py -z data/Little_Prince/zh.segmented  -c data/Little_Prince/en.segmented  > data/Little_Prince/zh-en
+rm  $TEMP_FOLDER"zh.unseg"
+rm $TEMP_FOLDER"tok.segmented"
 
-fast_align ctb -i data/Little_Prince/zh-en UTF-8 0 > data/Little_Prince/zh-en.alignments
+python join.py -z  $TEMP_FOLDER"zh.segmented"  -c   $TEMP_FOLDER"tok.segmented"  >  $TEMP_FOLDER"zh-en"
+
+fast_align ctb -i $TEMP_FOLDER"zh-en" UTF-8 0 > $TEMP_FOLDER"zh-en.alignments"
+
+#TODO how to use the en-zh alignments now?
