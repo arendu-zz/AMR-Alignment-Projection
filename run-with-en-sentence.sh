@@ -4,7 +4,7 @@ OUTPUT_ZH_ALIGNED="data/Little_Prince/amr-bank-struct-v1.3.txt.zh-aligned"
 TEMP_FOLDER="data/Little_Prince/"
 
 python extract-attributes.py -f $INPUT_ALIGNED  -a zh > $TEMP_FOLDER"zh.unseg"
-
+python extract-attributes.py -f $INPUT_ALIGNED -a alignments > $TEMP_FOLDER"en.span.alignments"
 python extract-attributes.py -f $INPUT_ALIGNED  -a tok > $TEMP_FOLDER"tok.segmented"
 
 segment.sh ctb $TEMP_FOLDER"zh.unseg" UTF-8 0 > $TEMP_FOLDER"zh.segmented"
@@ -17,4 +17,4 @@ fast_align ctb -i $TEMP_FOLDER"zh-en" UTF-8 0 > $TEMP_FOLDER"zh-en.alignments"
 
 #now we take the alignments and for each span in the en side find a corresponding span in zh
 
-
+python find-spans-in-source.py -a $TEMP_FOLDER"zh-en.alignments" -t $TEMP_FOLDER"en.span.alignments" > $TEMP_FOLDER"zh.span.alignments"
