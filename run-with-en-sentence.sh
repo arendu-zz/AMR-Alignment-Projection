@@ -10,10 +10,11 @@ python extract-attributes.py -f $INPUT_ALIGNED  -a tok > $TEMP_FOLDER"tok.segmen
 segment.sh ctb $TEMP_FOLDER"zh.unseg" UTF-8 0 > $TEMP_FOLDER"zh.segmented"
 
 rm  $TEMP_FOLDER"zh.unseg"
-rm $TEMP_FOLDER"tok.segmented"
 
 python join.py -z  $TEMP_FOLDER"zh.segmented"  -c   $TEMP_FOLDER"tok.segmented"  >  $TEMP_FOLDER"zh-en"
 
 fast_align ctb -i $TEMP_FOLDER"zh-en" UTF-8 0 > $TEMP_FOLDER"zh-en.alignments"
 
-#TODO how to use the en-zh alignments now?
+#now we take the alignments and for each span in the en side find a corresponding span in zh
+
+
