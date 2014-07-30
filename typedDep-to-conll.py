@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 __author__ = 'arenduchintala'
 
 """
@@ -14,6 +15,7 @@ cc(退休俸-8, 与-7)
 dobj(没有-4, 退休俸-8)
 """
 import re
+import sys, codecs
 from optparse import OptionParser
 
 
@@ -23,12 +25,14 @@ def split_type_dep_line(l):
 
 
 if __name__ == '__main__':
+    sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
+    sys.stdin = codecs.getwriter('utf-8')(sys.stdin)
     opt = OptionParser()
-    opt.add_option("-f", dest="typedDep", help="the typed dependency file location", )
-    opt.add_option("-a", dest="tags", help="the pos tag file location")
+    opt.add_option("-t", dest="typedDep", help="the typed dependency file location", )
+    opt.add_option("-p", dest="tags", help="the pos tag file location")
     (options, args) = opt.parse_args()
-    typed_deps = re.split('^$', open(options.typedDep, 'r').read())
-    tags = re.split('^$', open(options.tags, 'r').read())
+    typed_deps = re.split('^$', codecs.open(options.typedDep, 'r', 'utf-8').read())
+    tags = re.split('^$', codecs.open(options.tags, 'r', 'utf-8').read())
 
     for td, ta in zip(typed_deps, tags):
         ta = [tuple(s.split('/')) for s in ta.split()]
