@@ -43,6 +43,7 @@ if __name__ == '__main__':
         print 'ta = ', ta
         print 'td = ', td
         ta = [tuple(s.split('/')) for s in ta.split()]
+        seen = {}
         for l in td.strip().split('\n'):
             try:
                 arc_label, from_tok_id, to_tok_id = split_type_dep_line(l)
@@ -51,12 +52,18 @@ if __name__ == '__main__':
             try:
                 conll_line = [str(to_tok_id), ta[to_tok_id - 1][0], '_', ta[to_tok_id - 1][1], ta[to_tok_id - 1][1],
                               '_', str(from_tok_id), arc_label, '_', '_']
-                print '\t'.join(conll_line)
+                # print '\t'.join(conll_line)
+                seen[to_tok_id - 1] = '\t'.join(conll_line)
             except:
                 print 'failed to list', l
+        for i in range(len(ta)):
+            if i in seen:
+                print seen[i]
+            else:
+                print str(i) + '\t' + ta[i][0] + '\t_\t' + ta[i][1] + '\t' + ta[i][
+                    1] + '\t_\t' + '0' + '\t' + 'DUMMY' + '\t_\t_'
 
         print ''
-
 
 
 
