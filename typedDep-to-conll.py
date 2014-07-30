@@ -20,7 +20,7 @@ from optparse import OptionParser
 
 
 def split_type_dep_line(l):
-    arc_label, from_tok, to_tok, emp = re.split('[\(,\)]', l)
+    arc_label, from_tok, to_tok, emp = re.split('[\(\)]|, ', l)
     return arc_label.strip(), int(from_tok.strip().split('-')[1]), int(to_tok.strip().split('-')[1])
 
 
@@ -31,8 +31,8 @@ if __name__ == '__main__':
     opt.add_option("-t", dest="typedDep", help="the typed dependency file location", )
     opt.add_option("-p", dest="tags", help="the pos tag file location")
     (options, args) = opt.parse_args()
-    typed_deps = re.split('^$', codecs.open(options.typedDep, 'r', 'utf-8').read())
-    tags = re.split('^$', codecs.open(options.tags, 'r', 'utf-8').read())
+    typed_deps = re.split('\n\n', codecs.open(options.typedDep, 'r', 'utf-8').read().strip())
+    tags = re.split('\n\n', codecs.open(options.tags, 'r', 'utf-8').read().strip())
 
     for td, ta in zip(typed_deps, tags):
         ta = [tuple(s.split('/')) for s in ta.split()]
