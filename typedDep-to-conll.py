@@ -40,6 +40,8 @@ if __name__ == '__main__':
     tags = re.split('\n\n', codecs.open(options.tags, 'r', 'utf-8').read().strip())
 
     for td, ta in zip(typed_deps, tags):
+        print 'ta = ', ta
+        print 'td = ', td
         ta = [tuple(s.split('/')) for s in ta.split()]
         for l in td.strip().split('\n'):
             try:
