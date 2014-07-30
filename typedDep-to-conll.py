@@ -44,11 +44,15 @@ if __name__ == '__main__':
         for l in td.strip().split('\n'):
             try:
                 arc_label, from_tok_id, to_tok_id = split_type_dep_line(l)
+            except:
+                print 'failed to split', l
+            try:
                 conll_line = [str(to_tok_id), ta[to_tok_id - 1][0], '_', ta[to_tok_id - 1][1], ta[to_tok_id - 1][1],
                               '_', str(from_tok_id), arc_label, '_', '_']
                 print '\t'.join(conll_line)
             except:
-                print 'failed to parse', l
+                print 'failed to list', l
+
         print ''
 
 
