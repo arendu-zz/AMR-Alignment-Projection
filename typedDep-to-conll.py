@@ -20,8 +20,13 @@ from optparse import OptionParser
 
 
 def split_type_dep_line(l):
-    arc_label, from_tok, to_tok, emp = re.split('[\(\)]|, ', l)
-    return arc_label.strip(), int(from_tok.strip().split('-')[1]), int(to_tok.strip().split('-')[1])
+    # arc_label, from_tok, to_tok, emp = re.split('[\(\)]|, ', l)
+    arc_label, rest = l.split('(', 1)
+    from_tok, to_tok = rest.split(', ')
+    from_tok, from_tok_id = re.split('\-(?=[0-9]+$)]', from_tok)
+    to_tok, to_tok_id = re.split('\-(?=[0-9]+\)$)]', to_tok)
+    to_tok_id, emp = to_tok_id.split(')')
+    return arc_label.strip(), int(from_tok_id), int(to_tok_id)
 
 
 if __name__ == '__main__':
