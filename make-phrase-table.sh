@@ -1,0 +1,1 @@
+/usr/local/Cellar/moses/HEAD/scripts/training/train-model2.perl -root-dir ~/PycharmProjects/AMR-Alignment-Projection/data/moses-files -external-bin-dir ~/source-pkgs/giza-pp/external-bin/ --corpus /Users/arenduchintala/PycharmProjects/AMR-Alignment-Projection/data/Little_Prince/train --f zh --e en --first-step 1 --last-step 6
