@@ -248,3 +248,8 @@ if __name__ == '__main__':
     a = AMRGraph()
     a.parse_string(s)
     assert a.get_concept([0, 1, 0, 2]) == 'need-01'
+
+    s = "(a / and :op1 (s4 / system :mod (p5 / people)) :op2 (s3 / system :beneficiary (r / republic :poss (p3 / people)) :mod (p4 / politics) :mod (f2 / fundamental)) :op3 (f / form :poss (p2 / power :mod (s2 / state))) :op4 (p / people :poss-of (d / dictatorship :mod (d2 / democratic))) :op5 (s / system :poss (g / government-organization :ARG0-of (g2 / govern-01 :ARG1 (c / country)))))"
+    a = AMRGraph()
+    a.parse_string(s)
+    assert a.get_concept('0.0.0'.split('.')) == 'people'

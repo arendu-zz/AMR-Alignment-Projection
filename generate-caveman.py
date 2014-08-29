@@ -8,7 +8,7 @@ from AMRLists import NE_ONTOLOGY, QUANT_ONTOLOGY
 import pdb
 
 global verbose
-verbose = False
+verbose = True
 
 
 def get_caveman_string(g, s, a):
@@ -36,8 +36,13 @@ def get_caveman_string(g, s, a):
                     pass
                 if verbose:
                     print 'getting concept at', seq, 'for span', span
-                concept = g.get_concept(seq.split('.'))
-                if concept not in NE_ONTOLOGY and concept not in QUANT_ONTOLOGY:  # filters out NE concepts from appearing in the
+                try:
+                    concept = g.get_concept(seq.split('.'))
+                except:
+                    concept = "ERROR"
+                    if verbose:
+                        print 'failed to get concept ', seq.split('.')
+                if concept not in NE_ONTOLOGY and concept not in QUANT_ONTOLOGY and concept != "ERROR":  # filters out NE concepts from appearing in the
                     # caveman string
                     span_concepts[int(span[0]), int(span[1])].append(concept)
                 elif concept in s:  # accepts NE concepts if the concept is present in the english string directly
@@ -66,7 +71,7 @@ def get_caveman_string(g, s, a):
 
 if __name__ == '__main__':
     opt = OptionParser()
-    opt.add_option("-f", dest="amr_file", help="AMR File with alignments", default="data/Little_Prince/test.aligned")
+    opt.add_option("-f", dest="amr_file", help="AMR File with alignments", default="data/Little_Prince/test.amr")
     (options, args) = opt.parse_args()
     for item in open(options.amr_file, 'r').read().split('\n\n'):
         if item.strip() != '':
