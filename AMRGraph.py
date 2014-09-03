@@ -253,3 +253,11 @@ if __name__ == '__main__':
     a = AMRGraph()
     a.parse_string(s)
     assert a.get_concept('0.0.0'.split('.')) == 'people'
+
+    s = '(b  /  become-01  :ARG1  (i  /  island)  :ARG1-of  (f  /  fire-01  :ARG0  (a  /  around)  :ARG1-of  (a2  /  administrate-01  :ARG1-of  (a4  /  ' \
+        'administrate-01  :location-of  (d4  /  depend-01  :ARG0  (p  /  police  :mod  (n3  /  nation))  :ARG2-of  (b3  /  become-01  :ARG1  (s  /  system  ' \
+        ':ARG0-of  (f3  /  fight-01)))  :location  (d3  /  date-entity  :location  (a3  /  administrate-01  :ARG0  (t2  /  time)  :ARG1  (m2  /  ministry)  ' \
+        ':ARG1-of  (f2  /  fire-01)  :ARG2-of  (b2  /  become-01  :ARG0  (o  /  organization  :name  (n  /  name  :op1  "-LRB-"  :op2  "moi"  :op3  "-RBR-"  ' \
+        ':op4  "interior"))  :ARG1  (i2  /  it  :location-of  (n2  /  nation))))  :month  3)  :mod  (o2  /  only  :ARG1-of  (f4  /  fire-01))  :polarity  (-  /  -)  :time  (d2  /  date-entity  :year  1995)))))'
+    a = AMRGraph()
+    a.parse_string(s)
