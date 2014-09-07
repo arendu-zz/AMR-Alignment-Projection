@@ -8,10 +8,10 @@ Then the script enforces the alignments to comply to 2 constrains
 see : https://www.writelatex.com/articles/phrase-projection-for-cross-lingual-jamr-training/ttrvffrkrtjy#.VAh9_mRdUpw
 """
 from optparse import OptionParser
+import heapq
 from pprint import pprint
-from heapq import heapify, heappop, heappush
+from heapq import heappop, heappush
 from AMRMetadata import AMRMetadata
-import pdb
 
 
 def check_alignment(word_alignment, target_spans):
@@ -49,100 +49,170 @@ def check_alignment(word_alignment, target_spans):
                 tp_set.add(target2spanid.get(t))
                 src2targetspans[src] = tp_set
 
-    for ts in target_spans:
+    span_error = [False] * len(target_spans)
+    for ts_id, ts in enumerate(target_spans):
         tokens = range(ts[0], ts[1])
-        src = None
+        src = []
         for t in tokens:
             if t2s.get(t, None) is not None:
-                src = t2s[t]
-                break
-        if src is None:
-            return False  # all alignments from a target phrase have been lost
+                src += t2s[t]
+
+        if len(src) == 0:
+            span_error[ts_id] = True  # all alignments from a target phrase have been lost
         else:
-            src = src[0]  # assuming model 1 style alignments TODO what about giza++ alignments??
-            tp_set = src2targetspans[src]
+            tp_set = src2targetspans[src[0]]
+            for s in range(min(src), max(src) + 1):
+                if s in src2targetspans and tp_set != src2targetspans[s]:
+                    span_error[ts_id] = True
+            """
+            s = src[0]  # assuming model 1 style alignments TODO what about giza++ alignments??
+            tp_set = src2targetspans[s]
             for tok in tokens[1:]:
                 # 3 should map to just 2
                 # 4 shoudl map to 1,2
                 if t2s.get(tok, None) is not None:
                     if tp_set != src2targetspans[t2s.get(tok, None)[0]]:
-                        return False
+                        span_error[ts_id] = True
+            """
 
-    return True
+    alignment_error = [False] * len(word_alignment)
+    for ts_id, (ts, se) in enumerate(zip(target_spans, span_error)):
+        tokens = range(ts[0], ts[1])
+        for t in tokens:
+            if t in t2s:
+                srcs = t2s[t]
+                for s in srcs:
+                    alignment_error[word_alignment.index((s, t,))] = se
+
+    return alignment_error, span_error
 
 
-def remove_alignment(a, word_alignment, src_sentence=None, target_sentence=None):
-    new_word_alignment = [p for p in word_alignment if p != a]
-    return len(new_word_alignment), new_word_alignment  # score, alignment
+def remove_alignment(a, word_alignment, word_alignment_score):
+    new_word_alignment_score = [s for i, s in enumerate(word_alignment_score) if i != word_alignment.index(a)]
+    new_word_alignment = [p for i, p in enumerate(word_alignment) if a != p]
+    return sum(new_word_alignment_score), new_word_alignment_score, new_word_alignment  # score, alignment
 
 
-def search_alignments(init_alignment, target_spans):
+def search_alignments(init_alignment, init_alignment_score, target_spans):
     accepted_alignments = []
     Q = []
-    heappush(Q, (-len(init_alignment), init_alignment))  # len(A) is sub for score of an alignment which we want to max/minimize
+    heappush(Q, (-len(init_alignment), sum(init_alignment_score), init_alignment_score, init_alignment))  # len(A) is sub for score of an alignment which we
+    # want to
+    # max/minimize
+    # heapq._heapify_max(Q)
     while len(Q) > 0:
-        score_alignment, alignment = heappop(Q)
-        if not check_alignment(alignment, target_spans):
-            for a in alignment:
-                score_new_alignment, new_alignment = remove_alignment(a, alignment)
-                heappush(Q, (-score_new_alignment, new_alignment))
+        len_alignment, total_score, score_alignment, alignment = heappop(Q)
+        chk_word_align, chk_spans = check_alignment(alignment, target_spans)
+        if True in chk_word_align or True in chk_spans:
+            for a, chk in zip(alignment, chk_word_align):
+                if chk:
+                    total_new_score, score_new_alignment, new_alignment = remove_alignment(a, alignment, score_alignment)
+                    heappush(Q, (-len(new_alignment), total_new_score, score_new_alignment, new_alignment))
         else:
-            accepted_alignments.append((score_alignment, alignment))
+            accepted_alignments.append((len_alignment, total_score, score_alignment, alignment))
+            # return (len_alignment, total_score, score_alignment, alignment)
             break
     return accepted_alignments
 
 
+def format_spans(span_str):
+    span_str = [((int(s.split('|')[0].split('-')[0]), int(s.split('|')[0].split('-')[1])), s.split('|')[1]) for s in span_str.split()]
+    return span_str
+
+
+def format_alignment(alignment_str, src_sentence, target_sentence, lexp):
+    fmt_alignment = []
+    fmt_scores = []
+    for a in alignment_str.split():
+        i, j = a.split('-')
+        src_i = src_sentence[int(i)]
+        target_j = target_sentence[int(j)]
+        score = -lexp.get((src_i, target_j), float('-inf'))
+        fmt_alignment.append((int(i), int(j)))
+        fmt_scores.append(score)
+    return fmt_alignment, fmt_scores
+
+
 def test():
-    t_spans = [((0, 2), "X"), ((2, 4), "Y"), ((4, 5), "Z")]
-    w_aligns = [(2, 0), (1, 1), (4, 2), (4, 3), (4, 4)]
-    assert check_alignment(w_aligns, t_spans) == True
+    span_str = "0-1|0.3.2.1 2-5|0.2.1.1 9-12|0.2.3.3"
+    fmt_span = format_spans(span_str)
+    assert fmt_span == [((0, 1), "0.3.2.1"), ((2, 5), "0.2.1.1"), ((9, 12), "0.2.3.3")]
 
     t_spans = [((0, 2), "X"), ((2, 4), "Y"), ((4, 5), "Z")]
-    w_aligns = [(2, 0), (1, 1), (3, 2), (4, 3), (4, 4)]
+    w_aligns = [(2, 0, 1), (1, 1, 1), (3, 2, 1), (4, 3, 1), (4, 4, 1)]
     assert check_alignment(w_aligns, t_spans) == False
 
     t_spans = [((0, 2), "X"), ((2, 4), "Y"), ((4, 5), "Z")]
-    w_aligns = [(2, 0), (3, 2), (4, 3), (4, 4)]
+    w_aligns = [(2, 0, 1), (3, 2, 1), (4, 3, 1), (4, 4, 1)]
     assert check_alignment(w_aligns, t_spans) == False
 
     t_spans = [((0, 2), "X"), ((2, 4), "Y"), ((4, 5), "Z")]
-    w_aligns = [(2, 0), (3, 2), (4, 3)]
+    w_aligns = [(2, 0, 1), (3, 2, 1), (4, 3, 1)]
     assert check_alignment(w_aligns, t_spans) == False
+
+    spans = [((0, 2), "X"), ((2, 4), "Y"), ((4, 5), "Z")]
+    A = [(2, 0), (1, 1), (3, 2)]
+    As = [5, 2, 3]
+    assert search_alignments(A, As, spans) == []
+
+    spans = [((0, 2), "X"), ((2, 4), "Y"), ((4, 5), "Z")]
+    A = [(2, 0), (1, 1), (3, 2), (4, 3), (4, 4)]
+    As = [5, 2, 3, 1, 6]
+    assert search_alignments(A, As, spans) == [(-4, 14, [5, 2, 1, 6], [(2, 0), (1, 1), (4, 3), (4, 4)])]
     pass
 
 
 if __name__ == '__main__':
-    test()
+    # test()
     opt = OptionParser()
     opt.add_option("-a", dest="src_target_alignments", help="source-target alignments (of full sentences) from fast_align",
                    default="data/Little_Prince/zh-en.alignments")
-
-    opt.add_option("-f", dest="amr_file", help="amr file with target phrases", default="data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned")
-    opt.add_options("-l", dest="lex_file", help="lexical translation probs", default=)
+    opt.add_option("-e", dest="target_segmented", help="text file with target sentence per line", default="data/Little_Prince/train.en")
+    opt.add_option("-f", dest="src_segmented", help="text file with source sentences per line", default="data/Little_Prince/train.zh")
+    opt.add_option("-l", dest="lex_probs", help="lexical translation probabilities", default="data/Little_Prince/zh-en.lex")
+    opt.add_option("-r", dest="amr_file", help="amr file with target phrases", default="data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned")
     (options, args) = opt.parse_args()
-
+    lex = dict(((l.split()[0], l.split()[1]), float(l.split()[2]) ) for l in open(options.lex_probs, 'r').readlines())
     word_alignments = open(options.src_target_alignments, 'r').readlines()
+    en = open(options.target_segmented, 'r').readlines()
+    zh = open(options.src_segmented, 'r').readlines()
     amrs = open(options.amr_file, 'r').read().split('\n\n')
-    """
-    for amr, word_alignment in zip(amrs, word_alignments):
-        if amr.strip() != '':
+
+    for amr, wa, z, e in zip(amrs, word_alignments, zh, en):
+        if amr.strip() != '' and z.strip() != '' and e.strip() != '' and wa.strip() != '':
             c = AMRMetadata(amr)
             c.parse_graph()
-            # these are the alignments between the target and amr graph
-            # sometimes there are no alignments that's why there is a default
-            # of ''
-            spans = c.attributes.get('alignments', '')
-            #spans = [(int(t.split('-')[0]), t.split('|')[0]) for t in target_spans.strip().split()]
-            check_alignment(word_alignment, spans)
-    """
+            span_str = c.attributes.get('alignments', '')
+            fmt_span = format_spans(span_str)
+            fmt_alignment, fmt_scores = format_alignment(wa, z.strip().split(), e.strip().split(), lex)
 
+            f = search_alignments(fmt_alignment, fmt_scores, fmt_span)
+            if len(f) == 0:
+                print 'spans', fmt_span
+                print 'alignment', len(fmt_alignment), fmt_alignment
+                print wa
+                print 'scores', fmt_scores
+                print 'fixed', f
+                print 'ok'
+            """if -f[0] != len(fmt_alignment):
+                print 'spans', fmt_span
+                print 'alignment', len(fmt_alignment), fmt_alignment
+                print 'scores', fmt_scores
+                print 'fixed', f
+                print 'ok'"""
+
+    """
     spans = [((0, 2), "X"), ((2, 4), "Y"), ((4, 5), "Z")]
     A = [(2, 0), (1, 1), (3, 2), (4, 3), (4, 4)]
-    print search_alignments(A, spans)
+    As = [5, 2, 3, 1, 6]
+    assert search_alignments(A, As, spans) == [(-4, 14, [5, 2, 1, 6], [(2, 0), (1, 1), (4, 3), (4, 4)])]
 
-
-
-
+    t_spans = [((0, 2), "X"), ((2, 4), "Y"), ((4, 5), "Z")]
+    w_aligns = [(0, 0), (2, 1), (4, 2), (1, 3), (4, 4)]
+    As = [1, 2, 4, 1, 3]
+    a = search_alignments(w_aligns, As, t_spans)
+    pprint(a)
+    """
 
 
 
