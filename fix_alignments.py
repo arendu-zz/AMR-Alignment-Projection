@@ -198,6 +198,7 @@ if __name__ == '__main__':
             fmt_span = format_spans(span_str)
             fmt_alignment, fmt_scores = format_alignment(wa, z.strip().split(), e.strip().split(), lex)
             f = search_alignments(fmt_alignment, fmt_scores, fmt_span)
+            """
             if len(f) == 0:
                 print z
                 print e
@@ -207,14 +208,22 @@ if __name__ == '__main__':
                 print 'scores', fmt_scores
                 print 'fixed', f
                 print 'ok'
-
+            """
+            fixed_alignment = [str(a[0]) + '-' + str(a[1]) for a in f[0][3]]
+            fixed_alignment = ' '.join(fixed_alignment)
+            print fixed_alignment
+            """
             if -f[0][0] != len(fmt_alignment):
-                print 'spans', fmt_span
-                print 'alignment  :', fmt_alignment
-                print 'f alignment:', f[0][3]
-                print 'scores     :', fmt_scores
-                print 'fixed score:', f[0][2]
-                print 'ok'
+                # print 'spans', fmt_span
+                # print 'alignment  :', fmt_alignment
+                # print 'f alignment:', f[0][3]
+                fixed_alignment = [str(a[0]) + '-' + str(a[1]) for a in f[0][3]]
+                fixed_alignment = ' '.join(fixed_alignment)
+                print fixed_alignment
+                # print 'scores     :', fmt_scores
+                # print 'fixed score:', f[0][2]
+                # print 'ok'
+            """
 
 
 
