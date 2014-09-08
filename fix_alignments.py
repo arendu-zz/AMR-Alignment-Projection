@@ -104,7 +104,7 @@ def search_alignments(init_alignment, init_alignment_score, target_spans):
     while len(Q) > 0:
         len_alignment, total_score, score_alignment, alignment = heappop(Q)
         chk_word_align, chk_spans = check_alignment(alignment, target_spans)
-        if True in chk_word_align or sum(chk_spans) > sum(init_chk_span):
+        if (True in chk_word_align or sum(chk_spans) > sum(init_chk_span)) and (len(Q) < 100000):
             for a, chk in zip(alignment, chk_word_align):
                 if chk:
                     total_new_score, score_new_alignment, new_alignment = remove_alignment(a, alignment, score_alignment)
