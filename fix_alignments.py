@@ -230,7 +230,7 @@ if __name__ == '__main__':
             if z.strip() != '' and e.strip() != '' and wa.strip() != '' and span_str != '':
                 fmt_span, target_tokens = format_spans(span_str)
                 fmt_alignment, fmt_scores = format_alignment(wa, target_tokens, z.strip().split(), e.strip().split(), lex)
-                if check_input_spans(target_tokens):
+                if check_input_spans(target_tokens) and len(fmt_alignment) > 0:
                     f = search_alignments(fmt_alignment, fmt_scores, fmt_span)
                     fixed_alignment = [str(a[0]) + '-' + str(a[1]) for a in f[0][3]]
                     final_alignment = ' '.join(fixed_alignment)
@@ -239,7 +239,7 @@ if __name__ == '__main__':
                 else:
                     final_alignment = ' '.join([str(a[0]) + '-' + str(a[1]) for a in fmt_alignment])
                     print final_alignment
-                    msg = "target spans have overlap"
+                    msg = "target spans have overlap or no alignments exist for target spans"
             else:
                 msg = "empty target or source or amr or alignments"
                 print wa.strip()
