@@ -11,13 +11,11 @@ if __name__ == '__main__':
     opt = OptionParser()
     opt.add_option("-a", dest="source_en_alignments", help="source-caveman alignments from fast_align",
                    default="data/Little_Prince/zh-en.alignments")
-    opt.add_option("-c", dest="parallel_corp", help="parallel corpus that was used by fast align",
-                   default="data/Little_Prince/zh-en")
+
     opt.add_option("-f", dest="amr_file", help="AMR File with alignments with caveman alignments",
                    default="data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned")
     (options, args) = opt.parse_args()
 
-    pc = open(options.parallel_corp, 'r').readlines()
     source_to_en_alignment = open(options.source_en_alignments, 'r').readlines()
     source = []
     en = []  # target
