@@ -11,18 +11,13 @@ if __name__ == '__main__':
     opt = OptionParser()
     opt.add_option("-a", dest="source_en_alignments", help="source-caveman alignments from fast_align",
                    default="data/Little_Prince/zh-en.alignments")
-
-    opt.add_option("-f", dest="amr_file", help="AMR File with alignments with caveman alignments",
+    opt.add_option("-f", dest="source_sent", help="zh sentences ")
+    opt.add_option("-r", dest="amr_file", help="AMR File with alignments with caveman alignments",
                    default="data/Little_Prince/amr-bank-struct-v1.3.txt.en-aligned")
     (options, args) = opt.parse_args()
 
     source_to_en_alignment = open(options.source_en_alignments, 'r').readlines()
-    source = []
-    en = []  # target
-    for src_tar in open(options.parallel_corp, 'r').readlines():
-        src, tar = src_tar.split(' ||| ')
-        source.append(src.strip())
-        en.append(tar.strip())
+    source = open(options.source_sent, 'r').read().split('\n')
 
     metadata = []
     en_to_amr_alignments = []
